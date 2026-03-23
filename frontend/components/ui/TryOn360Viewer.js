@@ -178,12 +178,12 @@ export default function TryOn360Viewer({ frames = [], delay = 500 }) {
         </div>
 
         <div className="flex justify-between mt-2 px-1">
-          {['Front', '3/4 R', 'Side', 'Back', 'Side', '3/4 L'].map((label, i) => {
+          {['Front', '3/4 R', 'Side R', 'Back', 'Side L', '3/4 L'].map((label, i) => {
             const target = Math.round((i / 6) * (total - 1));
             const active = Math.abs(index - target) <= Math.max(1, Math.floor(total / 12));
             return (
               <button
-                key={label}
+                key={`${label}-${i}`}
                 className={`font-mono text-[10px] px-1 transition-colors ${active ? 'text-[var(--gold-dark)] font-bold' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
                 onClick={() => {
                   clearInterval(timerRef.current);

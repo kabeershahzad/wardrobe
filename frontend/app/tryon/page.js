@@ -1,6 +1,5 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDropzone } from 'react-dropzone';
 import Navbar from '../../components/ui/Navbar';
@@ -21,11 +20,10 @@ import {
   HiOutlineChevronRight
 } from 'react-icons/hi';
 
-export default function TryOnPage() {
+function TryOnPageInner() {
   const { user } = useAuth();
   const { toggleWishlist, isWishlisted } = useStore();
-  const searchParams = useSearchParams();
-  const productId = searchParams.get('product');
+  const [productId, setProductId] = useState(null);
 
   // ── Try-on studio state ──────────────────────────────────────────────────
   const [userImage, setUserImage] = useState(null);
@@ -53,6 +51,12 @@ export default function TryOnPage() {
   const [activeTab, setActiveTab] = useState('studio');
   const [history, setHistory] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState('all');
+
+  // ── Read productId from URL on client side ───────────────────────────────
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setProductId(params.get('product'));
+  }, []);
 
   // ── Load initial data ────────────────────────────────────────────────────
   useEffect(() => {
@@ -947,5 +951,13 @@ export default function TryOnPage() {
 
       <Footer />
     </main>
+  );
+}
+
+export default function TryOnPage() {
+  return (
+    <Suspense fallback={null}>
+      <TryOnPageInner />
+    </Suspense>
   );
 }
