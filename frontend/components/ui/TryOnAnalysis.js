@@ -71,8 +71,8 @@ export default function TryOnAnalysis({ analysis, onClose }) {
                 {/* Overall verdict */}
                 {overallVerdict && (
                     <div className={`p-4 rounded-xl border ${overallVerdict.looksGood
-                            ? 'border-green-500/25 bg-green-500/5'
-                            : 'border-amber-500/25 bg-amber-500/5'
+                        ? 'border-green-500/25 bg-green-500/5'
+                        : 'border-amber-500/25 bg-amber-500/5'
                         }`}>
                         <div className="flex items-center gap-2 mb-2">
                             <span className="text-xl">{overallVerdict.looksGood ? '✨' : '🤔'}</span>

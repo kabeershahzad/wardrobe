@@ -22,6 +22,7 @@ export default function AdminProductsPage() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [form, setForm] = useState(EMPTY_PRODUCT);
   const [files, setFiles] = useState([]);
+  const [primaryIndex, setPrimaryIndex] = useState(0); // which uploaded image is primary
   const [saving, setSaving] = useState(false);
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState({});
@@ -46,6 +47,7 @@ export default function AdminProductsPage() {
     setEditingProduct(null);
     setForm(EMPTY_PRODUCT);
     setFiles([]);
+    setPrimaryIndex(0);
     setShowModal(true);
   };
 
@@ -58,6 +60,7 @@ export default function AdminProductsPage() {
       tags: product.tags?.join(', ') || '', isFeatured: product.isFeatured, isNewArrival: product.isNewArrival
     });
     setFiles([]);
+    setPrimaryIndex(0);
     setShowModal(true);
   };
 
@@ -83,6 +86,7 @@ export default function AdminProductsPage() {
           else if (v !== undefined) fd.append(k, v);
         });
         files.forEach(f => fd.append('images', f));
+        fd.append('primaryIndex', primaryIndex);
         await productsAPI.create(fd);
         toast.success('Product created!');
       }
@@ -131,14 +135,15 @@ export default function AdminProductsPage() {
                 </thead>
                 <tbody>
                   {products.map((product, i) => {
-                    const img = product.images?.[0];
-                    const imgUrl = img?.gridId ? getImageUrl(img.gridId) : img?.url;
+                    const primaryImg = product.images?.find(i => i.isPrimary) || product.images?.[0];
+                    const imgUrl = primaryImg?.gridId ? getImageUrl(primaryImg.gridId) : primaryImg?.url;
                     return (
                       <tr key={product._id} className="border-b border-[var(--border)] hover:bg-[var(--bg-secondary)] transition-colors">
                         <td className="px-5 py-3">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-12 rounded-lg overflow-hidden bg-[var(--bg-secondary)] shrink-0">
                               {imgUrl ? <img src={imgUrl} alt={product.name} className="w-full h-full object-cover" /> : <HiOutlinePhotograph size={20} className="text-[var(--text-muted)] m-auto mt-3" />}
+
                             </div>
                             <div>
                               <p className="font-semibold text-[var(--text-primary)] line-clamp-1 max-w-40">{product.name}</p>
@@ -178,9 +183,8 @@ export default function AdminProductsPage() {
               <div className="flex justify-center gap-2 mt-6">
                 {[...Array(pagination.pages)].map((_, i) => (
                   <button key={i} onClick={() => setPage(i + 1)}
-                    className={`w-10 h-10 rounded-xl text-sm font-mono font-semibold transition-all ${
-                      page === i + 1 ? 'bg-gold-500 text-obsidian-950' : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
-                    }`}>
+                    className={`w-10 h-10 rounded-xl text-sm font-mono font-semibold transition-all ${page === i + 1 ? 'bg-gold-500 text-obsidian-950' : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
+                      }`}>
                     {i + 1}
                   </button>
                 ))}
@@ -261,9 +265,8 @@ export default function AdminProductsPage() {
                     {SIZES_ALL.map(s => (
                       <button key={s} type="button"
                         onClick={() => setForm(f => ({ ...f, sizes: f.sizes.includes(s) ? f.sizes.filter(x => x !== s) : [...f.sizes, s] }))}
-                        className={`w-12 h-10 rounded-lg text-sm font-mono border transition-all ${
-                          form.sizes.includes(s) ? 'border-gold-500 bg-gold-500 text-obsidian-950 font-bold' : 'border-[var(--border)] text-[var(--text-muted)] hover:border-gold-500/50'
-                        }`}>{s}
+                        className={`w-12 h-10 rounded-lg text-sm font-mono border transition-all ${form.sizes.includes(s) ? 'border-gold-500 bg-gold-500 text-obsidian-950 font-bold' : 'border-[var(--border)] text-[var(--text-muted)] hover:border-gold-500/50'
+                          }`}>{s}
                       </button>
                     ))}
                   </div>
@@ -285,11 +288,68 @@ export default function AdminProductsPage() {
 
                 {/* Images */}
                 {!editingProduct && (
-                  <div>
-                    <label className="block text-sm font-semibold mb-1.5 text-[var(--text-primary)]">Product Images</label>
-                    <input type="file" multiple accept="image/*" onChange={e => setFiles(Array.from(e.target.files))}
-                      className="input-luxury w-full px-4 py-3 rounded-xl text-sm cursor-pointer" />
-                    {files.length > 0 && <p className="text-xs text-gold-500 mt-1">{files.length} file(s) selected</p>}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <label className="block text-sm font-semibold text-[var(--text-primary)]">Product Images</label>
+                      <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest">Up to 5 images</span>
+                    </div>
+
+                    {/* AI Try-On note */}
+                    <div className="p-3 rounded-xl border border-gold-500/25 bg-gold-500/5">
+                      <p className="text-xs font-semibold text-gold-500 mb-1">⚡ AI Try-On Tip</p>
+                      <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                        The <span className="text-gold-400 font-semibold">Primary Image</span> is what Gemini AI uses for virtual try-on.
+                        For best results, set a <span className="text-white font-medium">clear front-facing product shot on a white/plain background</span> — no model, no props, no clutter.
+                        Avoid setting a model photo as primary as it confuses the AI.
+                      </p>
+                    </div>
+
+                    <input
+                      type="file" multiple accept="image/*"
+                      onChange={e => { setFiles(Array.from(e.target.files)); setPrimaryIndex(0); }}
+                      className="input-luxury w-full px-4 py-3 rounded-xl text-sm cursor-pointer"
+                    />
+
+                    {/* Image preview grid with primary selector */}
+                    {files.length > 0 && (
+                      <div>
+                        <p className="text-xs text-[var(--text-muted)] mb-2">
+                          Click an image to set it as <span className="text-gold-500 font-semibold">Primary</span> (used for AI try-on &amp; product card)
+                        </p>
+                        <div className="grid grid-cols-5 gap-2">
+                          {files.map((file, i) => {
+                            const url = URL.createObjectURL(file);
+                            const isPrimary = i === primaryIndex;
+                            return (
+                              <div
+                                key={i}
+                                onClick={() => setPrimaryIndex(i)}
+                                className="relative aspect-square rounded-xl overflow-hidden cursor-pointer border-2 transition-all"
+                                style={{
+                                  borderColor: isPrimary ? 'var(--gold)' : 'var(--border)',
+                                  boxShadow: isPrimary ? '0 0 0 2px var(--gold)' : 'none',
+                                }}
+                              >
+                                <img src={url} alt={`img-${i}`} className="w-full h-full object-cover" />
+                                {isPrimary && (
+                                  <div className="absolute inset-x-0 bottom-0 py-1 text-center"
+                                    style={{ background: 'var(--gold)' }}>
+                                    <span className="font-mono text-[9px] font-bold text-obsidian-950 uppercase tracking-widest">
+                                      Primary
+                                    </span>
+                                  </div>
+                                )}
+                                {!isPrimary && (
+                                  <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/50 flex items-center justify-center">
+                                    <span className="font-mono text-[9px] text-white">{i + 1}</span>
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
 

@@ -62,8 +62,9 @@ const createProduct = async (req, res) => {
   try {
     const productData = req.body;
 
-    // Handle uploaded images
+    // Handle uploaded images — respect primaryIndex sent by admin
     if (req.files && req.files.length > 0) {
+      const primaryIndex = parseInt(req.body.primaryIndex) || 0;
       const bucket = getGridFSBucket();
       const imagePromises = req.files.map((file, idx) => {
         return new Promise((resolve, reject) => {
@@ -72,7 +73,7 @@ const createProduct = async (req, res) => {
           });
           uploadStream.end(file.buffer);
           uploadStream.on('finish', () => {
-            resolve({ gridId: uploadStream.id, isPrimary: idx === 0 });
+            resolve({ gridId: uploadStream.id, isPrimary: idx === primaryIndex });
           });
           uploadStream.on('error', reject);
         });
