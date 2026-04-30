@@ -1,25 +1,25 @@
-﻿import { IBM_Plex_Mono, Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
+import { JetBrains_Mono, Orbitron, Space_Grotesk } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '../context/AuthContext';
 import { StoreProvider } from '../context/StoreContext';
 import '../styles/globals.css';
 
-const playfair = Playfair_Display({
+const orbitron = Orbitron({
   subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
+  weight: ['500', '600', '700', '800', '900'],
   variable: '--font-display',
   display: 'swap',
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-body',
   display: 'swap',
 });
 
-const plexMono = IBM_Plex_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
   variable: '--font-mono',
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${playfair.variable} ${jakarta.variable} ${plexMono.variable}`}
+      className={`${orbitron.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
@@ -72,4 +72,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
 

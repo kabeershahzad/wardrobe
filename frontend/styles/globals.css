@@ -1,39 +1,39 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  --gold: #9a6b42;
-  --gold-light: #eadfce;
-  --gold-dark: #7d5534;
+  --gold: #23f0ff;
+  --gold-light: #9ef8ff;
+  --gold-dark: #09c7d9;
 
-  --bg-primary: #f5f3ef;
-  --bg-secondary: #ece8e2;
-  --bg-tertiary: #e3ded6;
-  --card-bg: #faf8f4;
+  --bg-primary: #f1f6ff;
+  --bg-secondary: #e6eefb;
+  --bg-tertiary: #dbe6f8;
+  --card-bg: #f9fcff;
 
-  --text-primary: #1e1b18;
-  --text-secondary: #514b43;
-  --text-muted: #81796f;
-  --border: #d6cec4;
-  --nav-bg: rgba(245, 243, 239, 0.88);
+  --text-primary: #0d1530;
+  --text-secondary: #293760;
+  --text-muted: #5f7099;
+  --border: #c5d5f2;
+  --nav-bg: rgba(246, 251, 255, 0.86);
 }
 
 .dark {
-  --bg-primary: #11100f;
-  --bg-secondary: #171513;
-  --bg-tertiary: #201d1a;
-  --card-bg: #1b1815;
+  --bg-primary: #050814;
+  --bg-secondary: #0a1024;
+  --bg-tertiary: #111a35;
+  --card-bg: #0b132b;
 
-  --text-primary: #f0ece6;
-  --text-secondary: #c2b8ab;
-  --text-muted: #928676;
-  --border: #302b25;
-  --nav-bg: rgba(17, 16, 15, 0.9);
+  --text-primary: #e8f2ff;
+  --text-secondary: #b6c7f3;
+  --text-muted: #8092c4;
+  --border: #20325a;
+  --nav-bg: rgba(6, 10, 24, 0.82);
 }
 
 * {
@@ -56,15 +56,29 @@ body {
   overflow-x: hidden;
 }
 
-body::before {
+body::before,
+body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(circle at 15% 0%, rgba(154, 107, 66, 0.09), transparent 35%),
-    radial-gradient(circle at 100% 20%, rgba(154, 107, 66, 0.05), transparent 35%);
   z-index: -1;
+}
+
+body::before {
+  background:
+    radial-gradient(circle at 8% -10%, rgba(35, 240, 255, 0.18), transparent 34%),
+    radial-gradient(circle at 88% 0%, rgba(255, 46, 203, 0.16), transparent 38%),
+    radial-gradient(circle at 50% 100%, rgba(45, 96, 255, 0.15), transparent 42%);
+}
+
+body::after {
+  opacity: 0.46;
+  background-image:
+    linear-gradient(rgba(100, 130, 205, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 130, 205, 0.14) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.66), transparent 100%);
 }
 
 a {
@@ -81,7 +95,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(154, 107, 66, 0.65);
+  background: color-mix(in srgb, var(--gold) 56%, #12316f);
   border-radius: 999px;
 }
 
@@ -90,63 +104,79 @@ a {
 }
 
 ::selection {
-  background: var(--gold);
+  background: color-mix(in srgb, var(--gold) 88%, #0a0f24);
   color: #fff;
+}
+
+.wx-logo-text {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.wx-logo-x {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
 .glass {
-  background: color-mix(in srgb, var(--card-bg) 85%, transparent);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--card-bg) 84%, transparent);
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, var(--border));
+  backdrop-filter: blur(14px);
 }
 
 .text-gold-gradient {
-  color: var(--gold-dark);
-}
-
-.text-gold-shimmer {
-  background: linear-gradient(90deg, var(--gold-dark) 0%, #c2966a 50%, var(--gold-dark) 100%);
-  background-size: 200% auto;
+  background: linear-gradient(90deg, var(--gold-light), var(--gold), #82a9ff, var(--gold-light));
+  background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 3.2s linear infinite;
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(92deg, #8deeff 0%, #23f0ff 30%, #8f7cff 58%, #ff77d8 78%, #8deeff 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3.4s linear infinite;
 }
 
 .border-gold-glow {
-  border: 1px solid rgba(154, 107, 66, 0.38);
-  box-shadow: 0 10px 28px rgba(154, 107, 66, 0.14);
+  border: 1px solid color-mix(in srgb, var(--gold) 48%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 30%, transparent), 0 16px 30px rgba(3, 8, 28, 0.34);
 }
 
 .btn-gold {
-  background: var(--gold);
-  color: #fff;
+  background: linear-gradient(128deg, var(--gold-dark), var(--gold) 52%, #6ce8ff);
+  color: #031024;
+  border: 1px solid color-mix(in srgb, var(--gold) 74%, transparent);
   font-family: var(--font-body);
   font-weight: 700;
-  letter-spacing: 0.01em;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.03em;
+  box-shadow: 0 0 22px color-mix(in srgb, var(--gold) 46%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-gold:hover {
   transform: translateY(-1px);
-  background: var(--gold-dark);
-  box-shadow: 0 10px 22px rgba(154, 107, 66, 0.24);
+  filter: brightness(1.06);
+  box-shadow: 0 0 26px color-mix(in srgb, var(--gold) 58%, transparent), 0 14px 28px rgba(0, 0, 0, 0.32);
 }
 
 .btn-outline-gold {
-  border: 1px solid rgba(154, 107, 66, 0.52);
-  color: var(--gold-dark);
-  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--gold) 50%, var(--border));
+  color: var(--gold-light);
+  background: color-mix(in srgb, var(--bg-secondary) 72%, transparent);
   transition: all 0.2s ease;
 }
 
-.dark .btn-outline-gold {
-  color: #d6b48f;
-}
-
 .btn-outline-gold:hover {
-  background: rgba(154, 107, 66, 0.1);
-  border-color: var(--gold-dark);
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+  border-color: var(--gold);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 40%, transparent);
 }
 
 .card-hover {
@@ -155,16 +185,16 @@ a {
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  border-color: rgba(154, 107, 66, 0.35);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 24%, transparent), 0 14px 36px rgba(1, 4, 16, 0.46);
+  border-color: color-mix(in srgb, var(--gold) 46%, var(--border));
 }
 
 .input-luxury {
-  background: var(--bg-secondary);
+  background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
   border: 1px solid var(--border);
   color: var(--text-primary);
   font-family: var(--font-body);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .input-luxury::placeholder {
@@ -173,13 +203,13 @@ a {
 
 .input-luxury:focus {
   outline: none;
-  border-color: rgba(154, 107, 66, 0.7);
-  box-shadow: 0 0 0 3px rgba(154, 107, 66, 0.16);
+  border-color: color-mix(in srgb, var(--gold) 74%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 20%, transparent), 0 0 18px color-mix(in srgb, var(--gold) 30%, transparent);
 }
 
 .skeleton {
-  background: linear-gradient(90deg, var(--bg-secondary) 20%, var(--bg-tertiary) 50%, var(--bg-secondary) 80%);
-  background-size: 200% 100%;
+  background: linear-gradient(90deg, var(--bg-secondary) 20%, color-mix(in srgb, var(--gold) 12%, var(--bg-tertiary)) 50%, var(--bg-secondary) 80%);
+  background-size: 220% 100%;
   animation: shimmer 1.5s linear infinite;
 }
 
@@ -194,13 +224,14 @@ a {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(154, 107, 66, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--gold) 56%, transparent), transparent);
 }
 
 .section-shell {
-  border: 1px solid var(--border);
-  background: var(--card-bg);
+  border: 1px solid color-mix(in srgb, var(--gold) 20%, var(--border));
+  background: linear-gradient(160deg, color-mix(in srgb, var(--card-bg) 92%, transparent) 0%, color-mix(in srgb, var(--bg-secondary) 72%, transparent) 100%);
   border-radius: 1.25rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 28px rgba(2, 6, 22, 0.36);
 }
 
 .section-kicker {
@@ -208,11 +239,11 @@ a {
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--gold-light);
 }
 
 .section-title {
   font-family: var(--font-display);
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
-
