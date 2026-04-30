@@ -22,15 +22,17 @@ const saveToGridFS = (base64Data, filename, mimeType) => new Promise((resolve, r
 
 // ─── Call one Gemini model with timeout ──────────────────────────────────────
 const callGemini = (ai, model, parts, timeoutMs) => {
+  const is31 = model.includes('3.1');
   const req = ai.models.generateContent({
     model,
     contents: { parts },
     config: {
+      ...(is31 ? { responseModalities: ['IMAGE'] } : {}),
       imageConfig: {
         aspectRatio: '3:4',
         // imageSize '1K' is required for 3.1 — without it the model generates
         // a huge image and crashes. 2.5 does not support this param.
-        ...(model.includes('3.1') ? { imageSize: '1K' } : {}),
+        ...(is31 ? { imageSize: '1K' } : {}),
       },
     },
   });
@@ -53,12 +55,13 @@ const extractImage = (response) => {
   throw new Error('No image returned: ' + txt.slice(0, 100));
 };
 
-// ─── Try-on: 3.1 primary (90s) → 2.5 fallback (60s) ─────────────────────────
+// ─── Try-on: 3.1 primary (120s) → 2.5 fallback (60s) ─────────────────────────
 const tryOnWithFallback = async (ai, parts) => {
   // Try 3.1 first — best quality, keeps outfit faithful
   try {
     console.log(`  Trying ${TRYON_MODEL_PRIMARY}...`);
-    const response = await callGemini(ai, TRYON_MODEL_PRIMARY, parts, 90000);
+    // Increased timeout to 120s for 3.1
+    const response = await callGemini(ai, TRYON_MODEL_PRIMARY, parts, 120000);
     const image = extractImage(response);
     console.log(`  ✅ ${TRYON_MODEL_PRIMARY} succeeded`);
     return image;
@@ -137,6 +140,15 @@ const performTryOn = async (req, res) => {
       return res.status(400).json({ error: 'Product has no image. Upload one first.' });
     }
 
+    // ─── Optimize input images (Resize to 1024px max) ─────────────────────────
+    console.log('  Optimizing input images...');
+    const optimize = (buf) => sharp(buf).resize(1024, 1024, { fit: 'inside', withoutEnlargement: true }).toBuffer();
+    const [userPhotoResized, productPhotoResized] = await Promise.all([
+      optimize(req.file.buffer),
+      optimize(productBuf)
+    ]);
+    console.log(`  Optimized: User(${userPhotoResized.length}b) Product(${productPhotoResized.length}b)`);
+
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const resultImage = await tryOnWithFallback(ai, [
@@ -162,8 +174,8 @@ const performTryOn = async (req, res) => {
           `Garment: "${product.name}" | ${product.category}` +
           `${product.description ? ` | ${product.description}` : ''}`,
       },
-      { inlineData: { data: req.file.buffer.toString('base64'), mimeType: req.file.mimetype } },
-      { inlineData: { data: productBuf.toString('base64'), mimeType: 'image/jpeg' } },
+      { inlineData: { data: userPhotoResized.toString('base64'), mimeType: req.file.mimetype } },
+      { inlineData: { data: productPhotoResized.toString('base64'), mimeType: 'image/jpeg' } },
     ]);
 
     if (!resultImage) throw new Error('AI try-on failed. Please try again.');

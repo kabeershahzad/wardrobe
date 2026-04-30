@@ -1,6 +1,7 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSearchParams } from 'next/navigation';
 import Navbar from '../../components/ui/Navbar';
 import Footer from '../../components/ui/Footer';
 import ProductCard from '../../components/ui/ProductCard';
@@ -8,7 +9,7 @@ import { CardSkeleton } from '../../components/ui/Loaders';
 import { productsAPI } from '../../lib/api';
 import { HiOutlineAdjustments, HiOutlineX, HiOutlineSearch, HiOutlineChevronDown } from 'react-icons/hi';
 
-const CATEGORIES = ['all', 'tops', 'bottoms', 'dresses', 'outerwear', 'suits', 'casual', 'formal', 'accessories', 'ethnic', 'activewear'];
+const CATEGORIES = ['all', 'men', 'women', 'kids'];
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 const SORT_OPTIONS = [
   { value: 'newest', label: 'Newest First' },
@@ -17,44 +18,55 @@ const SORT_OPTIONS = [
   { value: 'rating', label: 'Top Rated' },
 ];
 
-export default function ShopPage() {
-  const initialFilters = () => {
-    if (typeof window === 'undefined') {
-      return {
-        category: 'all',
-        size: '',
-        minPrice: '',
-        maxPrice: '',
-        sort: 'newest',
-        search: '',
-        page: 1,
-        featured: '',
-        newArrival: '',
-      };
-    }
+const DEFAULT_FILTERS = {
+  category: 'all',
+  size: '',
+  minPrice: '',
+  maxPrice: '',
+  sort: 'newest',
+  search: '',
+  page: 1,
+  featured: '',
+  newArrival: '',
+};
 
-    const params = new URLSearchParams(window.location.search);
-    return {
-      category: params.get('category') || 'all',
-      size: '',
-      minPrice: '',
-      maxPrice: '',
-      sort: 'newest',
-      search: '',
-      page: 1,
-      featured: params.get('featured') || '',
-      newArrival: params.get('new') || '',
-    };
-  };
+export default function ShopPage() {
+  const searchParams = useSearchParams();
+  const latestRequestRef = useRef(0);
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState({ total: 0, page: 1, pages: 1 });
   const [showFilters, setShowFilters] = useState(false);
+  const [urlSynced, setUrlSynced] = useState(false);
 
-  const [filters, setFilters] = useState(initialFilters);
+  const [filters, setFilters] = useState(DEFAULT_FILTERS);
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    const nextFilters = {
+      ...DEFAULT_FILTERS,
+      category: params.get('category') || 'all',
+      featured: params.get('featured') || '',
+      newArrival: params.get('new') || '',
+    };
+
+    setFilters((prev) => {
+      if (
+        prev.category === nextFilters.category &&
+        prev.featured === nextFilters.featured &&
+        prev.newArrival === nextFilters.newArrival
+      ) {
+        return prev;
+      }
+      return nextFilters;
+    });
+    setUrlSynced(true);
+  }, [searchParams]);
 
   const fetchProducts = useCallback(async () => {
+    if (!urlSynced) return;
+    const requestId = ++latestRequestRef.current;
     setLoading(true);
     try {
       const params = { ...filters };
@@ -66,23 +78,23 @@ export default function ShopPage() {
       if (!params.featured) delete params.featured;
       if (!params.newArrival) delete params.newArrival;
       const { data } = await productsAPI.getAll({ ...params, limit: 12 });
+      if (requestId !== latestRequestRef.current) return;
       setProducts(data.products);
       setPagination(data.pagination);
     } catch (err) {
+      if (requestId !== latestRequestRef.current) return;
       console.error(err);
     } finally {
+      if (requestId !== latestRequestRef.current) return;
       setLoading(false);
     }
-  }, [filters]);
+  }, [filters, urlSynced]);
 
   useEffect(() => { fetchProducts(); }, [fetchProducts]);
 
   const updateFilter = (key, value) => setFilters(f => ({ ...f, [key]: value, page: 1 }));
 
-  const clearFilters = () => setFilters({
-    category: 'all', size: '', minPrice: '', maxPrice: '',
-    sort: 'newest', search: '', page: 1, featured: '', newArrival: ''
-  });
+  const clearFilters = () => setFilters(DEFAULT_FILTERS);
 
   const activeFilterCount = [
     filters.category !== 'all', filters.size, filters.minPrice,

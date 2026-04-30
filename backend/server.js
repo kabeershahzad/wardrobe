@@ -26,6 +26,7 @@ app.use('/api', limiter);
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/tryon', require('./routes/tryon'));
+app.use('/api/assistant', require('./routes/assistant'));
 app.use('/api/wishlist', require('./routes/wishlist'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/orders', require('./routes/orders'));

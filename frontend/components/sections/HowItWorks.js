@@ -11,45 +11,6 @@ import {
   HiOutlineTruck,
 } from 'react-icons/hi';
 
-const collections = [
-  {
-    title: 'Dresses Edit',
-    desc: 'Everyday to event-ready silhouettes with easy styling options.',
-    href: '/shop?category=dresses',
-    label: 'Best seller',
-  },
-  {
-    title: 'Ethnic Line',
-    desc: 'Modern classics designed for festive and formal moments.',
-    href: '/shop?category=ethnic',
-    label: 'New drop',
-  },
-  {
-    title: 'Work Formal',
-    desc: 'Structured pieces for office hours, meetings, and after-hours.',
-    href: '/shop?category=formal',
-    label: 'Office ready',
-  },
-  {
-    title: 'Outerwear',
-    desc: 'Layering staples with seasonal colors and premium details.',
-    href: '/shop?category=outerwear',
-    label: 'Limited stock',
-  },
-  {
-    title: 'Casual Fits',
-    desc: 'Comfort-led pieces for daily wear and weekend looks.',
-    href: '/shop?category=casual',
-    label: 'Daily edit',
-  },
-  {
-    title: 'Accessories',
-    desc: 'Small upgrades that complete every outfit with intent.',
-    href: '/shop?category=accessories',
-    label: 'Trending',
-  },
-];
-
 const storePromises = [
   {
     icon: HiOutlineTruck,
@@ -93,50 +54,61 @@ const testimonials = [
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-          <p className="section-kicker">Shop By Collection</p>
-          <h2 className="section-title text-4xl sm:text-5xl text-[var(--text-primary)] mt-2">Storefront Sections That Convert</h2>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          className="mb-20 text-center"
+        >
+          <span className="floating-data-tag mb-4 inline-block">System Architecture</span>
+          <h2 className="section-title text-5xl lg:text-7xl text-[var(--text-primary)] mt-4">
+            Material <span className="text-gradient-gold italic">DNA</span>
+          </h2>
+          <p className="text-[var(--text-secondary)] mt-6 max-w-2xl mx-auto text-lg font-light">
+            Our proprietary synthesis engine bridges the gap between digital simulation and physical reality.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {collections.map((collection, index) => (
+        <div className="grid lg:grid-cols-3 gap-8">
+          {[
+            { 
+              title: 'Neural Inference', 
+              desc: 'Real-time cloth simulation powered by a deep neural network trained on over 500,000 material samples.',
+              spec: 'LATENCY: 42ms'
+            },
+            { 
+              title: 'PBR 2.0 Rendering', 
+              desc: 'Physically Based Rendering with sub-surface scattering for hyper-realistic fabric texture and light response.',
+              spec: 'ACCURACY: 99.4%'
+            },
+            { 
+              title: 'Geometric Fit', 
+              desc: 'Automated body-mesh alignment ensures the digital garment fits your unique proportions with surgical precision.',
+              spec: 'MESH_V: 120k'
+            }
+          ].map((item, index) => (
             <motion.div
-              key={collection.title}
-              initial={{ opacity: 0, y: 16 }}
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="section-shell p-6"
+              transition={{ delay: index * 0.1 }}
+              className="hud-element p-10 rounded-[32px] group hover:border-var(--gold)/50 transition-all"
             >
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--text-muted)]">{collection.label}</p>
-              <h3 className="font-display text-3xl text-[var(--text-primary)] mt-3">{collection.title}</h3>
-              <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">{collection.desc}</p>
-              <Link href={collection.href} className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold text-[var(--gold-dark)]">
-                Shop category <HiOutlineArrowRight size={15} />
-              </Link>
+              <div className="w-12 h-12 rounded-full border border-var(--gold)/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <span className="text-var(--gold) font-mono text-xs">0{index + 1}</span>
+              </div>
+              <h3 className="font-display text-2xl text-[var(--text-primary)] mb-4">{item.title}</h3>
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-8 opacity-70">{item.desc}</p>
+              <div className="pt-6 border-t border-var(--border) flex items-center justify-between">
+                <span className="text-[10px] font-mono text-var(--gold)">{item.spec}</span>
+                <HiOutlineSparkles className="text-var(--gold)/30" />
+              </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="section-shell mt-6 p-8 sm:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6"
-        >
-          <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--text-muted)]">Power feature</p>
-            <h3 className="font-display text-4xl text-[var(--text-primary)] mt-2">Add Try-On Without Leaving the Storefront</h3>
-            <p className="text-[var(--text-secondary)] mt-3 max-w-2xl">
-              Keep the Shopify-style shopping rhythm while offering AI previews for higher purchase confidence.
-            </p>
-          </div>
-          <Link href="/tryon" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg btn-gold text-sm shrink-0">
-            <HiOutlineSparkles size={15} /> Launch Try-On
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

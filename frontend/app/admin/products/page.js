@@ -9,9 +9,9 @@ import { productsAPI, getImageUrl } from '../../../lib/api';
 import toast from 'react-hot-toast';
 import { HiOutlinePlus, HiOutlinePencil, HiOutlineTrash, HiOutlineX, HiOutlinePhotograph } from 'react-icons/hi';
 
-const CATS = ['tops', 'bottoms', 'dresses', 'outerwear', 'suits', 'casual', 'formal', 'accessories', 'ethnic', 'activewear'];
+const CATS = ['men', 'women', 'kids'];
 const SIZES_ALL = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
-const EMPTY_PRODUCT = { name: '', description: '', price: '', originalPrice: '', category: 'tops', brand: 'Wardrobe X', sizes: ['M'], colors: '', tags: '', isFeatured: false, isNewArrival: false };
+const EMPTY_PRODUCT = { name: '', description: '', price: '', originalPrice: '', category: 'men', brand: 'Wardrobe X', sizes: ['M'], colors: '', tags: '', isFeatured: false, isNewArrival: false };
 
 export default function AdminProductsPage() {
   const router = useRouter();

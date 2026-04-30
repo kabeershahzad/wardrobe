@@ -7,23 +7,27 @@
   --font-body: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
+  --gold: #0891b2; /* Deeper teal for contrast in light mode */
+  --gold-light: #06b6d4;
+  --gold-dark: #155e75;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --card-bg: #ffffff;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+.dark {
   --gold: #23f0ff;
   --gold-light: #9ef8ff;
   --gold-dark: #09c7d9;
 
-  --bg-primary: #f1f6ff;
-  --bg-secondary: #e6eefb;
-  --bg-tertiary: #dbe6f8;
-  --card-bg: #f9fcff;
-
-  --text-primary: #0d1530;
-  --text-secondary: #293760;
-  --text-muted: #5f7099;
-  --border: #c5d5f2;
-  --nav-bg: rgba(246, 251, 255, 0.86);
-}
-
-.dark {
   --bg-primary: #050814;
   --bg-secondary: #0a1024;
   --bg-tertiary: #111a35;
@@ -34,6 +38,18 @@
   --text-muted: #8092c4;
   --border: #20325a;
   --nav-bg: rgba(6, 10, 24, 0.82);
+}
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 * {
@@ -67,18 +83,88 @@ body::after {
 
 body::before {
   background:
-    radial-gradient(circle at 8% -10%, rgba(35, 240, 255, 0.18), transparent 34%),
-    radial-gradient(circle at 88% 0%, rgba(255, 46, 203, 0.16), transparent 38%),
-    radial-gradient(circle at 50% 100%, rgba(45, 96, 255, 0.15), transparent 42%);
+    radial-gradient(circle at 8% -10%, rgba(35, 240, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 88% 0%, rgba(255, 46, 203, 0.12), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(45, 96, 255, 0.12), transparent 50%);
 }
 
 body::after {
-  opacity: 0.46;
+  opacity: 0.3;
   background-image:
-    linear-gradient(rgba(100, 130, 205, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100, 130, 205, 0.14) 1px, transparent 1px);
-  background-size: 38px 38px;
-  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.66), transparent 100%);
+    linear-gradient(rgba(100, 130, 205, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 130, 205, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.5), transparent 100%);
+}
+
+/* Luxury Utilities */
+.glass-morphism {
+  background: color-mix(in srgb, var(--card-bg) 70%, transparent);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid color-mix(in srgb, var(--gold) 20%, var(--border));
+}
+
+.glass-morphism-dark {
+  background: rgba(6, 10, 24, 0.65);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.animate-reveal {
+  animation: reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes reveal {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.hover-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--gold) 30%, transparent);
+  transform: translateY(-2px);
+}
+
+.mask-radial {
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 300px);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 250px);
+  }
+}
+
+@media (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
 }
 
 a {
@@ -246,4 +332,103 @@ a {
   font-family: var(--font-display);
   letter-spacing: -0.01em;
   text-transform: uppercase;
+}
+
+/* FYP Signature Utilities */
+.hud-element {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.dark .hud-element {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cyber-glow {
+  position: relative;
+}
+
+.cyber-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, var(--gold), transparent, var(--gold-dark));
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0.3;
+  filter: blur(8px);
+}
+
+.parallax-layer {
+  will-change: transform;
+}
+
+.text-reveal-wrapper {
+  overflow: hidden;
+  display: block;
+}
+
+.text-reveal-content {
+  display: block;
+  transform: translateY(100%);
+}
+
+.floating-data-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 5%, transparent);
+}
+
+/* FYP Signature 2.0: Laboratory & Blueprint Patterns */
+.blueprint-grid {
+  background-image: 
+    linear-gradient(rgba(8, 145, 178, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 145, 178, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .blueprint-grid {
+  background-image: 
+    linear-gradient(rgba(35, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(35, 240, 255, 0.03) 1px, transparent 1px);
+}
+
+.tech-border-glow {
+  box-shadow: 0 0 15px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+.scan-line-vertical {
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+}
+
+.lab-overlay {
+  background: radial-gradient(circle at center, transparent, var(--bg-primary) 70%);
+}
+
+.text-tech {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s infinite ease-in-out;
 }

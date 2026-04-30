@@ -31,20 +31,20 @@ export default function NewsletterSection() {
         >
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
-              <p className="section-kicker">Email Capture</p>
-              <h2 className="section-title text-4xl sm:text-5xl text-[var(--text-primary)] mt-2">Get 10% Off Your First Order</h2>
-              <p className="text-[var(--text-secondary)] max-w-xl mt-4">
-                A conversion-focused Shopify pattern: offer value first, then bring shoppers back with weekly launches and curated edits.
+              <span className="floating-data-tag mb-4 inline-block">Join the Protocol</span>
+              <h2 className="section-title text-4xl sm:text-5xl text-[var(--text-primary)] mt-2 italic">Get <span className="text-gradient-gold">10% Off</span> First Synthesis</h2>
+              <p className="text-[var(--text-secondary)] max-w-xl mt-6 text-lg font-light">
+                Join our network to receive technical updates on new material drops and exclusive access to the AI synthesis engine.
               </p>
 
-              <div className="mt-6 space-y-2.5">
+              <div className="mt-8 space-y-4">
                 {[
-                  'Early access to weekly drops',
-                  'Exclusive bundles and private offers',
-                  'Personalized style picks in your inbox',
+                  'Priority Node Access',
+                  'Exclusive Material Blueprints',
+                  'Neural Style Optimization',
                 ].map((benefit) => (
-                  <p key={benefit} className="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-                    <HiOutlineCheckCircle size={16} className="text-[var(--gold-dark)]" />
+                  <p key={benefit} className="flex items-center gap-3 text-sm text-[var(--text-secondary)] font-medium">
+                    <HiOutlineCheckCircle size={18} className="text-var(--gold)" />
                     {benefit}
                   </p>
                 ))}

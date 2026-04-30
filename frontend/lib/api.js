@@ -49,12 +49,17 @@ export const productsAPI = {
 export const tryonAPI = {
   perform: (formData) => api.post('/tryon', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
-    timeout: 120000,
+    timeout: 150000, // Increased to 150s to match backend 120s + latency
   }),
   generateVideo: (data) => api.post('/tryon/video', data, { timeout: 180000 }),
   getHistory: () => api.get('/tryon/history'),
   analyse: (data) => api.post('/tryon/analyse', data, { timeout: 60000 }),
   getOne: (id) => api.get(`/tryon/${id}`),
+};
+
+// Assistant
+export const assistantAPI = {
+  chat: (data) => api.post('/assistant/chat', data),
 };
 
 // Wishlist

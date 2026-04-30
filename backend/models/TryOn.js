@@ -15,7 +15,7 @@ const tryOnSchema = new mongoose.Schema({
     default: 'pending'
   },
   processingTime: { type: Number },
-  aiModel: { type: String, default: 'gemini-2.0-flash-exp' },
+  aiModel: { type: String, default: 'gemini-3.1-flash-image-preview' },
   prompt: { type: String },
   errorMessage: { type: String },
   isVideo: { type: Boolean, default: false },

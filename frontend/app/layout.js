@@ -3,6 +3,7 @@ import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '../context/AuthContext';
 import { StoreProvider } from '../context/StoreContext';
+import Chatbot from '../components/ui/Chatbot';
 import '../styles/globals.css';
 
 const orbitron = Orbitron({
@@ -45,10 +46,12 @@ export default function RootLayout({ children }) {
       className={`${orbitron.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <div className="noise-overlay" />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <AuthProvider>
             <StoreProvider>
               {children}
+              <Chatbot />
               <Toaster
                 position="top-right"
                 toastOptions={{

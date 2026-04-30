@@ -40,52 +40,76 @@ export default function FeaturedProducts() {
   }, []);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background Accents */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-var(--gold)/5 to-transparent pointer-events-none" />
+      
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-10"
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20"
         >
-          <div>
-            <p className="section-kicker">Featured Collection</p>
-            <h2 className="section-title text-4xl sm:text-5xl text-[var(--text-primary)] mt-2">Best Sellers This Week</h2>
-            <p className="text-sm text-[var(--text-secondary)] mt-3 max-w-xl">
-              A curated grid inspired by high-converting Shopify storefronts: clear picks, clean cards, and fast routes to checkout.
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-12 h-px bg-var(--gold)" />
+              <p className="section-kicker">Curated Batch</p>
+            </div>
+            <h2 className="section-title text-5xl lg:text-7xl text-[var(--text-primary)] leading-tight">
+              Selected <span className="text-gradient-gold italic">Artifacts</span>
+            </h2>
+            <p className="text-lg text-[var(--text-secondary)] mt-6 leading-relaxed font-light">
+              Explore our latest synthesis of high-performance materials and AI-driven design. Each piece is optimized for the future storefront.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <Link href="/shop?featured=true" className="px-3 py-2 rounded-full text-xs font-semibold border" style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}>
-              Featured
-            </Link>
-            <Link href="/shop?new=true" className="px-3 py-2 rounded-full text-xs font-semibold border" style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}>
-              New arrivals
-            </Link>
-            <Link href="/shop" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full btn-gold text-xs">
-              Shop all products <HiOutlineArrowRight size={14} />
+          <div className="flex items-center gap-4">
+            <Link href="/shop" className="group flex items-center gap-4 text-sm font-bold uppercase tracking-widest">
+              Browse All
+              <span className="w-14 h-14 rounded-full border border-var(--border) flex items-center justify-center group-hover:bg-var(--text-primary) group-hover:text-[var(--bg-primary)] transition-all">
+                <HiOutlineArrowRight size={20} />
+              </span>
             </Link>
           </div>
         </motion.div>
 
         {loading ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {[...Array(8)].map((_, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[...Array(4)].map((_, i) => (
               <ProductSkeleton key={i} />
             ))}
           </div>
         ) : products.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {products.map((p, i) => (
-              <ProductCard key={p._id} product={p} index={i} />
-            ))}
+          <div className="relative group">
+            {/* Custom Horizontal Container */}
+            <div className="flex gap-8 overflow-x-auto pb-12 snap-x no-scrollbar">
+              {products.map((p, i) => (
+                <div key={p._id} className="min-w-[320px] md:min-w-[400px] snap-center">
+                  <ProductCard product={p} index={i} />
+                </div>
+              ))}
+            </div>
+            
+            {/* Navigation HUD */}
+            <div className="absolute -bottom-4 left-0 right-0 flex justify-center gap-2">
+              <div className="hud-element px-4 py-2 rounded-full flex items-center gap-4">
+                <span className="text-[10px] font-mono text-var(--gold)">SCROLL_TO_EXPLORE</span>
+                <div className="w-24 h-px bg-var(--gold)/30 relative overflow-hidden">
+                  <motion.div 
+                    animate={{ x: ['-100%', '100%'] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                    className="absolute inset-0 bg-var(--gold)" 
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
-          <div className="section-shell p-12 text-center">
-            <p className="font-display text-2xl text-[var(--text-primary)]">No products available right now.</p>
-            <Link href="/shop" className="inline-flex mt-5 items-center gap-2 px-6 py-3 rounded-lg btn-gold text-sm">
-              Browse Collection
+          <div className="section-shell p-20 text-center glass-morphism">
+            <p className="font-display text-3xl text-[var(--text-primary)]">System Offline: No data found.</p>
+            <Link href="/shop" className="inline-flex mt-8 items-center gap-3 px-8 py-4 rounded-full btn-gold text-sm font-bold uppercase">
+              Restore Catalog
             </Link>
           </div>
         )}

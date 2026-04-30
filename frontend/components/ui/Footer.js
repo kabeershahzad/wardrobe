@@ -5,9 +5,10 @@ import { FaInstagram, FaTwitter, FaTiktok, FaPinterest } from 'react-icons/fa';
 
 const footerLinks = {
   Shop: [
-    { label: 'All Products', href: '/shop' },
+    { label: 'Men', href: '/shop?category=men' },
+    { label: 'Women', href: '/shop?category=women' },
+    { label: 'Kids', href: '/shop?category=kids' },
     { label: 'Featured', href: '/shop?featured=true' },
-    { label: 'New Arrivals', href: '/shop?new=true' },
     { label: 'Try-On Studio', href: '/tryon' },
   ],
   Account: [
@@ -29,8 +30,20 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-9">
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-3">
-              <h3 className="font-display text-3xl text-[var(--text-primary)]">Wardrobe X</h3>
+            <Link href="/" className="shrink-0 inline-flex items-center gap-2 select-none mb-6">
+              <span
+                className="w-6 h-6 rounded-md"
+                style={{
+                  background: 'linear-gradient(135deg, var(--gold) 0%, color-mix(in srgb, var(--gold) 38%, #7f6bff) 100%)',
+                  boxShadow: '0 0 16px color-mix(in srgb, var(--gold) 58%, transparent)',
+                }}
+              />
+              <span className="wx-logo-text text-xl leading-none" style={{ color: 'var(--text-primary)' }}>
+                Wardrobe
+              </span>
+              <span className="wx-logo-x text-2xl leading-none" style={{ color: 'var(--gold)' }}>
+                X
+              </span>
             </Link>
             <p className="text-sm text-[var(--text-secondary)] max-w-sm leading-relaxed">
               Virtual try-on that helps you choose better, faster. Discover looks with confidence before you buy.
