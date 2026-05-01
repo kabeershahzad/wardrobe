@@ -47,7 +47,7 @@ export default function AdminUsersPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">Admin</span>
+            <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">Admin</span>
             <h1 className="font-display text-4xl font-bold text-[var(--text-primary)]">Users ({total})</h1>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function AdminUsersPage() {
                   <tr key={u._id} className="border-b border-[var(--border)] hover:bg-[var(--bg-secondary)] transition-colors">
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-700 flex items-center justify-center text-obsidian-950 text-xs font-bold shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-700 flex items-center justify-center text-obsidian-950 text-xs font-bold shrink-0">
                           {u.name?.[0]?.toUpperCase()}
                         </div>
                         <span className="font-semibold text-[var(--text-primary)]">{u.name}</span>
@@ -83,7 +83,7 @@ export default function AdminUsersPage() {
                     </td>
                     <td className="px-5 py-3 text-[var(--text-muted)]">{u.email}</td>
                     <td className="px-5 py-3">
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-mono font-semibold ${u.role === 'admin' ? 'bg-gold-500/15 text-gold-500' : 'bg-[var(--bg-secondary)] text-[var(--text-muted)]'}`}>
+                      <span className={`px-2 py-0.5 rounded-full text-xs font-mono font-semibold ${u.role === 'admin' ? 'bg-purple-500/15 text-purple-500' : 'bg-[var(--bg-secondary)] text-[var(--text-muted)]'}`}>
                         {u.role}
                       </span>
                     </td>

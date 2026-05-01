@@ -5,8 +5,8 @@ export function Spinner({ size = 'md', className = '' }) {
   const sizes = { sm: 'w-4 h-4', md: 'w-8 h-8', lg: 'w-12 h-12' };
   return (
     <div className={`relative ${sizes[size]} ${className}`}>
-      <div className="absolute inset-0 rounded-full border-2" style={{ borderColor: 'color-mix(in srgb, var(--gold) 24%, transparent)' }} />
-      <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[var(--gold)] animate-spin" />
+      <div className="absolute inset-0 rounded-full border-2" style={{ borderColor: 'color-mix(in srgb, var(--purple) 24%, transparent)' }} />
+      <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[var(--purple)] animate-spin" />
     </div>
   );
 }
@@ -15,7 +15,7 @@ export function PageLoader() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'var(--bg-primary)' }}>
       <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} className="flex flex-col items-center gap-3">
-        <div className="w-14 h-14 rounded-full border flex items-center justify-center" style={{ borderColor: 'color-mix(in srgb, var(--gold) 40%, transparent)' }}>
+        <div className="w-14 h-14 rounded-full border flex items-center justify-center" style={{ borderColor: 'color-mix(in srgb, var(--purple) 40%, transparent)' }}>
           <Spinner size="md" />
         </div>
         <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-[var(--text-muted)]">Loading</p>

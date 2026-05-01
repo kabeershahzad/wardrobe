@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
                     fontSize: '14px',
                     boxShadow: '0 12px 24px rgba(0,0,0,0.12)',
                   },
-                  success: { iconTheme: { primary: 'var(--gold-dark)', secondary: '#fff' } },
+                  success: { iconTheme: { primary: 'var(--purple-dark)', secondary: '#fff' } },
                   error: { iconTheme: { primary: '#ef4444', secondary: '#fff' } },
                 }}
               />

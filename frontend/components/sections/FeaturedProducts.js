@@ -42,7 +42,7 @@ export default function FeaturedProducts() {
   return (
     <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background Accents */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-var(--gold)/5 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-var(--purple)/5 to-transparent pointer-events-none" />
       
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -53,11 +53,11 @@ export default function FeaturedProducts() {
         >
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-12 h-px bg-var(--gold)" />
+              <span className="w-12 h-px bg-var(--purple)" />
               <p className="section-kicker">Curated Batch</p>
             </div>
             <h2 className="section-title text-5xl lg:text-7xl text-[var(--text-primary)] leading-tight">
-              Selected <span className="text-gradient-gold italic">Artifacts</span>
+              Selected <span className="text-gradient-purple italic">Artifacts</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] mt-6 leading-relaxed font-light">
               Explore our latest synthesis of high-performance materials and AI-driven design. Each piece is optimized for the future storefront.
@@ -94,12 +94,12 @@ export default function FeaturedProducts() {
             {/* Navigation HUD */}
             <div className="absolute -bottom-4 left-0 right-0 flex justify-center gap-2">
               <div className="hud-element px-4 py-2 rounded-full flex items-center gap-4">
-                <span className="text-[10px] font-mono text-var(--gold)">SCROLL_TO_EXPLORE</span>
-                <div className="w-24 h-px bg-var(--gold)/30 relative overflow-hidden">
+                <span className="text-[10px] font-mono text-var(--purple)">SCROLL_TO_EXPLORE</span>
+                <div className="w-24 h-px bg-var(--purple)/30 relative overflow-hidden">
                   <motion.div 
                     animate={{ x: ['-100%', '100%'] }}
                     transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-0 bg-var(--gold)" 
+                    className="absolute inset-0 bg-var(--purple)" 
                   />
                 </div>
               </div>
@@ -108,7 +108,7 @@ export default function FeaturedProducts() {
         ) : (
           <div className="section-shell p-20 text-center glass-morphism">
             <p className="font-display text-3xl text-[var(--text-primary)]">System Offline: No data found.</p>
-            <Link href="/shop" className="inline-flex mt-8 items-center gap-3 px-8 py-4 rounded-full btn-gold text-sm font-bold uppercase">
+            <Link href="/shop" className="inline-flex mt-8 items-center gap-3 px-8 py-4 rounded-full btn-purple text-sm font-bold uppercase">
               Restore Catalog
             </Link>
           </div>

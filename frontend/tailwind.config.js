@@ -1,4 +1,4 @@
-﻿/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: [
@@ -14,34 +14,35 @@ module.exports = {
         mono: ['var(--font-mono)', 'monospace'],
       },
       colors: {
-        gold: {
-          50: '#edfeff',
-          100: '#cbfcff',
-          200: '#9ef8ff',
-          300: '#67f4ff',
-          400: '#23f0ff',
-          500: '#09d7e8',
-          600: '#05a8b9',
-          700: '#067d8a',
-          800: '#0a5e68',
-          900: '#0b434a',
+        purple: {
+          50: '#f5f3ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#4c1d95',
+          950: '#2e1065',
         },
         obsidian: {
-          50: '#edf3ff',
-          100: '#dce7ff',
-          200: '#beceff',
-          300: '#95abff',
-          400: '#6b82f8',
-          500: '#4d62da',
-          600: '#3e4eb0',
-          700: '#313c8c',
-          800: '#21295f',
-          900: '#13183a',
-          950: '#050814',
+          50: '#f2f2f2',
+          100: '#e5e5e5',
+          200: '#cccccc',
+          300: '#b3b3b3',
+          400: '#999999',
+          500: '#808080',
+          600: '#666666',
+          700: '#4d4d4d',
+          800: '#333333',
+          900: '#1a1a1a',
+          950: '#000000',
         },
       },
       backgroundImage: {
-        'accent-soft': 'linear-gradient(145deg, rgba(35,240,255,0.2), rgba(5,8,20,0))',
+        'accent-soft': 'linear-gradient(145deg, rgba(168,85,247,0.2), rgba(0,0,0,0))',
       },
       animation: {
         shimmer: 'shimmer 2.2s linear infinite',
@@ -68,11 +69,10 @@ module.exports = {
         },
       },
       boxShadow: {
-        gold: '0 0 0 1px rgba(35,240,255,0.25), 0 0 24px rgba(35,240,255,0.3)',
-        glass: '0 16px 34px rgba(2, 8, 29, 0.38)',
+        purple: '0 0 0 1px rgba(168,85,247,0.25), 0 0 24px rgba(168,85,247,0.3)',
+        glass: '0 16px 34px rgba(0, 0, 0, 0.4)',
       },
     },
   },
   plugins: [],
 };
-

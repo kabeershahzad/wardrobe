@@ -56,7 +56,7 @@ export default function FabricLabSection() {
             >
               <span className="text-tech mb-4 block animate-pulse-soft">Core.Engine.Active</span>
               <h2 className="section-title text-5xl lg:text-7xl mb-8 leading-tight">
-                The <span className="text-gradient-gold">Fabric</span> <br /> Laboratory
+                The <span className="text-gradient-purple">Fabric</span> <br /> Laboratory
               </h2>
               <p className="text-[var(--text-secondary)] text-lg font-light leading-relaxed max-w-xl">
                 Witness the intersection of computational geometry and high-end fashion. Our laboratory simulates 
@@ -71,17 +71,17 @@ export default function FabricLabSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + (i * 0.1) }}
-                    className="flex gap-6 p-6 rounded-2xl border border-var(--border) bg-var(--card-bg)/50 backdrop-blur-sm group hover:border-var(--gold)/30 transition-all"
+                    className="flex gap-6 p-6 rounded-2xl border border-var(--border) bg-var(--card-bg)/50 backdrop-blur-sm group hover:border-var(--purple)/30 transition-all"
                   >
-                    <div className="w-14 h-14 rounded-xl border border-var(--gold)/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <step.icon size={24} className="text-var(--gold)" />
+                    <div className="w-14 h-14 rounded-xl border border-var(--purple)/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <step.icon size={24} className="text-var(--purple)" />
                     </div>
                     <div>
                       <h3 className="font-display text-xl mb-2">{step.title}</h3>
                       <p className="text-sm text-[var(--text-muted)] leading-relaxed">{step.desc}</p>
                       <div className="flex gap-4 mt-4">
                         {step.metrics.map(m => (
-                          <span key={m} className="text-[8px] font-mono text-var(--gold) px-2 py-1 rounded bg-var(--gold)/5 border border-var(--gold)/10">
+                          <span key={m} className="text-[8px] font-mono text-var(--purple) px-2 py-1 rounded bg-var(--purple)/5 border border-var(--purple)/10">
                             {m}
                           </span>
                         ))}
@@ -96,18 +96,18 @@ export default function FabricLabSection() {
           <div className="lg:w-1/2 relative">
             <motion.div 
               style={{ x: x2 }}
-              className="absolute -top-20 -right-20 w-64 h-64 border border-var(--gold)/10 rounded-full animate-spin-slow pointer-events-none" 
+              className="absolute -top-20 -right-20 w-64 h-64 border border-var(--purple)/10 rounded-full animate-spin-slow pointer-events-none" 
             />
             
-            <div className="relative z-10 glass-morphism rounded-[40px] p-8 md:p-12 overflow-hidden border-var(--gold)/20 cyber-glow">
+            <div className="relative z-10 glass-morphism rounded-[40px] p-8 md:p-12 overflow-hidden border-var(--purple)/20 cyber-glow">
               {/* Internal Tech Elements */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-var(--gold) to-transparent opacity-30" />
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-var(--gold) to-transparent opacity-30" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-var(--purple) to-transparent opacity-30" />
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-var(--purple) to-transparent opacity-30" />
               
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <p className="text-tech opacity-60">System_Diagnostics</p>
-                  <p className="text-xs font-mono text-var(--gold)">NODE_CONNECTED: CLOUD_RENDER_01</p>
+                  <p className="text-xs font-mono text-var(--purple)">NODE_CONNECTED: CLOUD_RENDER_01</p>
                 </div>
                 <div className="text-right">
                   <p className="text-tech opacity-60">Uptime</p>
@@ -119,23 +119,23 @@ export default function FabricLabSection() {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  className="absolute inset-0 border-[2px] border-dashed border-var(--gold)/20 rounded-full"
+                  className="absolute inset-0 border-[2px] border-dashed border-var(--purple)/20 rounded-full"
                 />
                 <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                  className="absolute inset-8 border border-dashed border-var(--gold)/10 rounded-full"
+                  className="absolute inset-8 border border-dashed border-var(--purple)/10 rounded-full"
                 />
                 
                 <div className="relative z-10 text-center">
                   <motion.div
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ duration: 4, repeat: Infinity }}
-                    className="w-40 h-40 rounded-full bg-gradient-to-br from-var(--gold) to-var(--gold-dark) flex items-center justify-center shadow-[0_0_50px_rgba(8,145,178,0.3)]"
+                    className="w-40 h-40 rounded-full bg-gradient-to-br from-var(--purple) to-var(--purple-dark) flex items-center justify-center shadow-[0_0_50px_rgba(8,145,178,0.3)]"
                   >
                     <HiOutlineBeaker size={64} className="text-white" />
                   </motion.div>
-                  <p className="mt-8 font-display text-4xl text-gradient-gold">Active</p>
+                  <p className="mt-8 font-display text-4xl text-gradient-purple">Active</p>
                   <p className="text-tech mt-2">Fabric_Synthesis_In_Progress</p>
                 </div>
 
@@ -145,7 +145,7 @@ export default function FabricLabSection() {
                     key={idx}
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 3, delay: idx * 0.5, repeat: Infinity }}
-                    className="absolute hud-element px-3 py-1.5 rounded-lg text-[8px] font-mono text-var(--gold)"
+                    className="absolute hud-element px-3 py-1.5 rounded-lg text-[8px] font-mono text-var(--purple)"
                     style={{ top: pt.t, bottom: pt.b, left: pt.l, right: pt.r }}
                   >
                     {pt.label}::{pt.value}%
@@ -156,7 +156,7 @@ export default function FabricLabSection() {
 
             <motion.div 
               style={{ x: x1 }}
-              className="absolute -bottom-20 -left-20 w-80 h-80 border border-var(--gold)/5 rounded-full pointer-events-none" 
+              className="absolute -bottom-20 -left-20 w-80 h-80 border border-var(--purple)/5 rounded-full pointer-events-none" 
             />
           </div>
         </div>

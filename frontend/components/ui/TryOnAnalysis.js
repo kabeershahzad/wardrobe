@@ -20,23 +20,23 @@ const Score = ({ value }) => (
     </div>
 );
 
-const Badge = ({ label, color = 'gold' }) => {
+const Badge = ({ label, color = 'purple' }) => {
     const colors = {
-        gold: 'bg-gold-500/15 text-gold-400 border-gold-500/30',
+        purple: 'bg-purple-500/15 text-purple-400 border-purple-500/30',
         green: 'bg-green-500/15 text-green-400 border-green-500/30',
         red: 'bg-red-500/15 text-red-400 border-red-500/30',
         blue: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
         purple: 'bg-purple-500/15 text-purple-400 border-purple-500/30',
     };
     return (
-        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${colors[color] || colors.gold}`}>
+        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border ${colors[color] || colors.purple}`}>
             {label}
         </span>
     );
 };
 
-const fitColor = f => f === 'Excellent' ? 'green' : f === 'Good' ? 'gold' : 'red';
-const matchColor = m => m === 'Excellent' ? 'green' : m === 'Good' ? 'gold' : m === 'Fair' ? 'blue' : 'red';
+const fitColor = f => f === 'Excellent' ? 'green' : f === 'Good' ? 'purple' : 'red';
+const matchColor = m => m === 'Excellent' ? 'green' : m === 'Good' ? 'purple' : m === 'Fair' ? 'blue' : 'red';
 
 export default function TryOnAnalysis({ analysis, onClose }) {
     if (!analysis) return null;
@@ -53,7 +53,7 @@ export default function TryOnAnalysis({ analysis, onClose }) {
         >
             {/* Header */}
             <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--border)]">
-                <div className="w-9 h-9 rounded-full bg-gold-500/15 flex items-center justify-center text-lg shrink-0">🧠</div>
+                <div className="w-9 h-9 rounded-full bg-purple-500/15 flex items-center justify-center text-lg shrink-0">🧠</div>
                 <div className="flex-1">
                     <h3 className="font-display text-lg font-semibold text-[var(--text-primary)]">AI Stylist Analysis</h3>
                     <p className="text-xs text-[var(--text-muted)]">Fabric · Colour · Fit · Store Picks</p>
@@ -104,7 +104,7 @@ export default function TryOnAnalysis({ analysis, onClose }) {
                             <p className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest mb-2">Fabric</p>
                             <p className="font-semibold text-sm text-[var(--text-primary)] mb-1">{fabricAnalysis.material}</p>
                             <p className="text-xs text-[var(--text-muted)] mb-2 leading-relaxed">{fabricAnalysis.texture}</p>
-                            <Badge label={fabricAnalysis.quality} color="gold" />
+                            <Badge label={fabricAnalysis.quality} color="purple" />
                         </div>
                     )}
                     {colourAnalysis && (
@@ -170,7 +170,7 @@ export default function TryOnAnalysis({ analysis, onClose }) {
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.08 * i }}
-                                        className="flex items-center gap-3 p-3 rounded-xl border border-[var(--border)] hover:border-gold-500/40 transition-all group"
+                                        className="flex items-center gap-3 p-3 rounded-xl border border-[var(--border)] hover:border-purple-500/40 transition-all group"
                                         style={{ background: 'var(--bg-secondary)' }}
                                     >
                                         {/* Thumbnail */}
@@ -189,7 +189,7 @@ export default function TryOnAnalysis({ analysis, onClose }) {
                                             <p className="font-semibold text-sm text-[var(--text-primary)] truncate">
                                                 {s.product?.name || s.productName}
                                             </p>
-                                            <p className="text-xs text-gold-500 capitalize mt-0.5 mb-1">
+                                            <p className="text-xs text-purple-500 capitalize mt-0.5 mb-1">
                                                 {s.product?.category}
                                             </p>
                                             <p className="text-xs text-[var(--text-muted)] leading-relaxed line-clamp-2">
@@ -204,7 +204,7 @@ export default function TryOnAnalysis({ analysis, onClose }) {
                                             </p>
                                             <Link
                                                 href={`/tryon?product=${s.product?._id}`}
-                                                className="inline-flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-full btn-gold"
+                                                className="inline-flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-full btn-purple"
                                             >
                                                 Try on →
                                             </Link>
@@ -223,7 +223,7 @@ export default function TryOnAnalysis({ analysis, onClose }) {
                             No store suggestions available right now.
                         </p>
                         <Link href="/shop"
-                            className="inline-flex items-center gap-1.5 mt-2 text-sm font-semibold text-gold-500 hover:text-gold-400 transition-colors">
+                            className="inline-flex items-center gap-1.5 mt-2 text-sm font-semibold text-purple-500 hover:text-purple-400 transition-colors">
                             Browse full collection →
                         </Link>
                     </div>

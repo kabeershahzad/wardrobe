@@ -94,21 +94,21 @@ export default function Navbar() {
         >
           <div className={`relative px-4 sm:px-6 h-[72px] rounded-[24px] border transition-all duration-500 flex items-center justify-between gap-4 ${
             scrolled 
-              ? 'glass-morphism shadow-2xl py-2 h-[64px] border-[var(--gold)]/30' 
+              ? 'glass-morphism shadow-2xl py-2 h-[64px] border-[var(--purple)]/30' 
               : 'glass-morphism shadow-lg'
           }`}>
             {/* Logo */}
             <Link href="/" className="group flex items-center gap-2.5 shrink-0">
               <div className="relative w-8 h-8 flex items-center justify-center">
                 <motion.div
-                  className="absolute inset-0 rounded-lg bg-gradient-to-tr from-[var(--gold-dark)] to-[var(--gold)]"
+                  className="absolute inset-0 rounded-lg bg-gradient-to-tr from-[var(--purple-dark)] to-[var(--purple)]"
                   whileHover={{ rotate: 45, scale: 1.1 }}
                 />
                 <span className="relative z-10 font-display font-black text-white text-sm">W</span>
               </div>
               <div className="hidden sm:block overflow-hidden">
                 <motion.span className="wx-logo-text block text-sm tracking-[0.2em] font-bold">
-                  Wardrobe <span className="text-[var(--gold)]">X</span>
+                  Wardrobe <span className="text-[var(--purple)]">X</span>
                 </motion.span>
               </div>
             </Link>
@@ -130,7 +130,7 @@ export default function Navbar() {
                     {active && (
                       <motion.div
                         layoutId="nav-active"
-                        className="absolute inset-0 bg-[var(--gold-dark)] rounded-xl z-0"
+                        className="absolute inset-0 bg-[var(--purple-dark)] rounded-xl z-0"
                         transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                       />
                     )}
@@ -150,7 +150,7 @@ export default function Navbar() {
                 <Link href="/wishlist" className="relative p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-[var(--text-secondary)]">
                   <HiOutlineHeart size={18} />
                   {wishlist.length > 0 && (
-                    <span className="absolute top-1 right-1 w-4 h-4 bg-[var(--gold)] text-[#051022] text-[9px] font-bold rounded-full flex items-center justify-center">
+                    <span className="absolute top-1 right-1 w-4 h-4 bg-[var(--purple)] text-[#051022] text-[9px] font-bold rounded-full flex items-center justify-center">
                       {wishlist.length}
                     </span>
                   )}
@@ -158,7 +158,7 @@ export default function Navbar() {
                 <Link href="/cart" className="relative p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-[var(--text-secondary)]">
                   <HiOutlineShoppingBag size={18} />
                   {cartCount > 0 && (
-                    <span className="absolute top-1 right-1 w-4 h-4 bg-[var(--gold)] text-[#051022] text-[9px] font-bold rounded-full flex items-center justify-center">
+                    <span className="absolute top-1 right-1 w-4 h-4 bg-[var(--purple)] text-[#051022] text-[9px] font-bold rounded-full flex items-center justify-center">
                       {cartCount}
                     </span>
                   )}
@@ -177,9 +177,9 @@ export default function Navbar() {
                   <div ref={menuRef} className="relative">
                     <button
                       onClick={() => setUserMenuOpen(!userMenuOpen)}
-                      className="flex items-center gap-2 p-1 pr-3 rounded-full border border-black/10 dark:border-white/10 hover:border-[var(--gold)] transition-all duration-300"
+                      className="flex items-center gap-2 p-1 pr-3 rounded-full border border-black/10 dark:border-white/10 hover:border-[var(--purple)] transition-all duration-300"
                     >
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--gold-dark)] to-[var(--gold)] flex items-center justify-center text-white font-bold text-xs">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--purple-dark)] to-[var(--purple)] flex items-center justify-center text-white font-bold text-xs">
                         {user.name?.[0]?.toUpperCase()}
                       </div>
                       <HiOutlineChevronDown size={14} className={`text-[var(--text-muted)] transition-transform duration-300 ${userMenuOpen ? 'rotate-180' : ''}`} />
@@ -197,9 +197,9 @@ export default function Navbar() {
                             <Link
                               key={link.href}
                               href={link.href}
-                              className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[var(--gold)]/10 text-sm font-medium transition-colors"
+                              className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[var(--purple)]/10 text-sm font-medium transition-colors"
                             >
-                              <link.icon size={16} className="text-[var(--gold)]" />
+                              <link.icon size={16} className="text-[var(--purple)]" />
                               {link.label}
                             </Link>
                           ))}
@@ -255,7 +255,7 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       className={`text-4xl font-display font-black transition-colors ${
-                        active ? 'text-[var(--gold)]' : 'text-[var(--text-primary)] hover:text-[var(--gold)]'
+                        active ? 'text-[var(--purple)]' : 'text-[var(--text-primary)] hover:text-[var(--purple)]'
                       }`}
                     >
                       {link.label}

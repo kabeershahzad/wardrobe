@@ -64,7 +64,7 @@ export function HowItWorksSection() {
         >
           <span className="floating-data-tag mb-4 inline-block">System Architecture</span>
           <h2 className="section-title text-5xl lg:text-7xl text-[var(--text-primary)] mt-4">
-            Material <span className="text-gradient-gold italic">DNA</span>
+            Material <span className="text-gradient-purple italic">DNA</span>
           </h2>
           <p className="text-[var(--text-secondary)] mt-6 max-w-2xl mx-auto text-lg font-light">
             Our proprietary synthesis engine bridges the gap between digital simulation and physical reality.
@@ -95,16 +95,16 @@ export function HowItWorksSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="hud-element p-10 rounded-[32px] group hover:border-var(--gold)/50 transition-all"
+              className="hud-element p-10 rounded-[32px] group hover:border-var(--purple)/50 transition-all"
             >
-              <div className="w-12 h-12 rounded-full border border-var(--gold)/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                <span className="text-var(--gold) font-mono text-xs">0{index + 1}</span>
+              <div className="w-12 h-12 rounded-full border border-var(--purple)/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <span className="text-var(--purple) font-mono text-xs">0{index + 1}</span>
               </div>
               <h3 className="font-display text-2xl text-[var(--text-primary)] mb-4">{item.title}</h3>
               <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-8 opacity-70">{item.desc}</p>
               <div className="pt-6 border-t border-var(--border) flex items-center justify-between">
-                <span className="text-[10px] font-mono text-var(--gold)">{item.spec}</span>
-                <HiOutlineSparkles className="text-var(--gold)/30" />
+                <span className="text-[10px] font-mono text-var(--purple)">{item.spec}</span>
+                <HiOutlineSparkles className="text-var(--purple)/30" />
               </div>
             </motion.div>
           ))}
@@ -133,7 +133,7 @@ export function FeaturesSection() {
               transition={{ delay: index * 0.05 }}
               className="section-shell p-5"
             >
-              <Icon size={19} className="text-[var(--gold-dark)]" />
+              <Icon size={19} className="text-[var(--purple-dark)]" />
               <h3 className="font-display text-xl text-[var(--text-primary)] mt-4">{title}</h3>
               <p className="text-sm text-[var(--text-secondary)] mt-2">{desc}</p>
             </motion.div>
@@ -150,7 +150,7 @@ export function FeaturesSection() {
               transition={{ delay: index * 0.04 }}
               className="section-shell p-6"
             >
-              <HiOutlineCube size={18} className="text-[var(--gold-dark)]" />
+              <HiOutlineCube size={18} className="text-[var(--purple-dark)]" />
               <p className="text-[var(--text-secondary)] mt-4 leading-relaxed">"{item.quote}"</p>
               <p className="font-semibold text-sm text-[var(--text-primary)] mt-5">{item.name}</p>
               <p className="text-xs text-[var(--text-muted)]">{item.role}</p>

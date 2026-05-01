@@ -85,7 +85,7 @@ export default function ProductDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-8 text-sm text-[var(--text-muted)]">
-          <Link href="/shop" className="flex items-center gap-1 hover:text-gold-500 transition-colors">
+          <Link href="/shop" className="flex items-center gap-1 hover:text-purple-500 transition-colors">
             <HiOutlineChevronLeft size={16} /> Shop
           </Link>
           <span>/</span>
@@ -105,7 +105,7 @@ export default function ProductDetailPage() {
                     key={i}
                     onClick={() => setSelectedImage(i)}
                     className={`aspect-square rounded-xl overflow-hidden border-2 transition-all ${
-                      selectedImage === i ? 'border-gold-500' : 'border-[var(--border)] opacity-60 hover:opacity-100'
+                      selectedImage === i ? 'border-purple-500' : 'border-[var(--border)] opacity-60 hover:opacity-100'
                     }`}
                   >
                     <img src={imageUrl(img)} alt="" className="w-full h-full object-cover" />
@@ -134,7 +134,7 @@ export default function ProductDetailPage() {
                 </div>
               )}
               {product.isNewArrival && (
-                <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-gold-500 text-obsidian-950 text-sm font-bold">
+                <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-purple-500 text-obsidian-950 text-sm font-bold">
                   NEW
                 </div>
               )}
@@ -143,7 +143,7 @@ export default function ProductDetailPage() {
 
           {/* Product Info */}
           <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-            <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">{product.brand} · {product.category}</span>
+            <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">{product.brand} · {product.category}</span>
             <h1 className="font-display text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mt-2 mb-3 leading-tight">
               {product.name}
             </h1>
@@ -152,7 +152,7 @@ export default function ProductDetailPage() {
             <div className="flex items-center gap-2 mb-5">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <HiStar key={i} size={18} className={i < Math.round(product.rating) ? 'text-gold-500' : 'text-[var(--border)]'} />
+                  <HiStar key={i} size={18} className={i < Math.round(product.rating) ? 'text-purple-500' : 'text-[var(--border)]'} />
                 ))}
               </div>
               <span className="text-sm text-[var(--text-muted)]">
@@ -190,8 +190,8 @@ export default function ProductDetailPage() {
                       onClick={() => setSelectedColor(color)}
                       className={`px-4 py-2 rounded-xl text-sm border transition-all ${
                         selectedColor === color
-                          ? 'border-gold-500 bg-gold-500/10 text-gold-500 font-semibold'
-                          : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/40'
+                          ? 'border-purple-500 bg-purple-500/10 text-purple-500 font-semibold'
+                          : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/40'
                       }`}
                     >
                       {color}
@@ -214,8 +214,8 @@ export default function ProductDetailPage() {
                       onClick={() => setSelectedSize(size)}
                       className={`w-12 h-12 rounded-xl font-mono font-semibold text-sm border transition-all ${
                         selectedSize === size
-                          ? 'border-gold-500 bg-gold-500 text-obsidian-950'
-                          : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
+                          ? 'border-purple-500 bg-purple-500 text-obsidian-950'
+                          : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/50'
                       }`}
                     >
                       {size}
@@ -230,23 +230,23 @@ export default function ProductDetailPage() {
               <p className="text-sm font-semibold text-[var(--text-primary)]">Qty:</p>
               <div className="flex items-center border border-[var(--border)] rounded-xl overflow-hidden">
                 <button onClick={() => setQty(q => Math.max(1, q - 1))}
-                  className="w-10 h-10 flex items-center justify-center hover:bg-gold-500/10 text-[var(--text-secondary)] transition-colors font-bold text-lg">−</button>
+                  className="w-10 h-10 flex items-center justify-center hover:bg-purple-500/10 text-[var(--text-secondary)] transition-colors font-bold text-lg">−</button>
                 <span className="w-10 text-center font-mono font-semibold text-sm text-[var(--text-primary)]">{qty}</span>
                 <button onClick={() => setQty(q => q + 1)}
-                  className="w-10 h-10 flex items-center justify-center hover:bg-gold-500/10 text-[var(--text-secondary)] transition-colors font-bold text-lg">+</button>
+                  className="w-10 h-10 flex items-center justify-center hover:bg-purple-500/10 text-[var(--text-secondary)] transition-colors font-bold text-lg">+</button>
               </div>
             </div>
 
             {/* Action Buttons */}
             <div className="flex gap-3 mb-6">
               <button onClick={handleAddToCart}
-                className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl btn-gold font-semibold">
+                className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl btn-purple font-semibold">
                 <HiOutlineShoppingBag size={20} />
                 Add to Cart
               </button>
               <Link
                 href={`/tryon?product=${product._id}`}
-                className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl btn-outline-gold font-semibold text-sm"
+                className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl btn-outline-purple font-semibold text-sm"
               >
                 <HiOutlineSparkles size={18} />
                 Try It On
@@ -255,12 +255,12 @@ export default function ProductDetailPage() {
 
             <div className="flex gap-3">
               <button onClick={() => toggleWishlist(product._id)}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-gold-500/50 text-sm text-[var(--text-secondary)] hover:text-red-400 transition-all">
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-purple-500/50 text-sm text-[var(--text-secondary)] hover:text-red-400 transition-all">
                 {wishlisted ? <HiHeart className="text-red-400" size={18} /> : <HiOutlineHeart size={18} />}
                 {wishlisted ? 'Saved' : 'Save'}
               </button>
               <button onClick={() => { navigator.clipboard.writeText(window.location.href); toast.success('Link copied!'); }}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-gold-500/50 text-sm text-[var(--text-secondary)] transition-all">
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-purple-500/50 text-sm text-[var(--text-secondary)] transition-all">
                 <HiOutlineShare size={18} />
                 Share
               </button>
@@ -288,7 +288,7 @@ export default function ProductDetailPage() {
                 onClick={() => setActiveTab(tab)}
                 className={`pb-3 font-semibold text-sm capitalize transition-all border-b-2 -mb-px ${
                   activeTab === tab
-                    ? 'border-gold-500 text-gold-500'
+                    ? 'border-purple-500 text-purple-500'
                     : 'border-transparent text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                 }`}
               >
@@ -314,7 +314,7 @@ export default function ProductDetailPage() {
                     <div className="flex gap-1 mb-4">
                       {[1,2,3,4,5].map(s => (
                         <button key={s} type="button" onClick={() => setNewReview(r => ({ ...r, rating: s }))}>
-                          <HiStar size={24} className={s <= newReview.rating ? 'text-gold-500' : 'text-[var(--border)]'} />
+                          <HiStar size={24} className={s <= newReview.rating ? 'text-purple-500' : 'text-[var(--border)]'} />
                         </button>
                       ))}
                     </div>
@@ -327,7 +327,7 @@ export default function ProductDetailPage() {
                       required
                     />
                     <button type="submit" disabled={submittingReview}
-                      className="px-6 py-2.5 rounded-xl btn-gold font-semibold text-sm disabled:opacity-60">
+                      className="px-6 py-2.5 rounded-xl btn-purple font-semibold text-sm disabled:opacity-60">
                       {submittingReview ? 'Submitting...' : 'Submit Review'}
                     </button>
                   </form>
@@ -342,7 +342,7 @@ export default function ProductDetailPage() {
                         <div className="flex items-center justify-between mb-2">
                           <span className="font-semibold text-sm text-[var(--text-primary)]">{review.name}</span>
                           <div className="flex">{[...Array(5)].map((_, j) => (
-                            <HiStar key={j} size={14} className={j < review.rating ? 'text-gold-500' : 'text-[var(--border)]'} />
+                            <HiStar key={j} size={14} className={j < review.rating ? 'text-purple-500' : 'text-[var(--border)]'} />
                           ))}</div>
                         </div>
                         <p className="text-sm text-[var(--text-secondary)]">{review.comment}</p>

@@ -72,12 +72,12 @@ export default function Chatbot() {
             {/* Header - Compact */}
             <div className="p-3 border-b flex items-center justify-between" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--gold-dark), var(--gold))' }}>
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--purple-dark), var(--purple))' }}>
                   <HiOutlineSparkles className="text-white" size={16} />
                 </div>
                 <div>
                   <h3 className="font-display text-sm font-bold uppercase tracking-wider" style={{ color: 'var(--text-primary)' }}>AI Stylist</h3>
-                  <p className="text-[8px] font-bold uppercase tracking-widest" style={{ color: 'var(--gold)' }}>Bespoke Service</p>
+                  <p className="text-[8px] font-bold uppercase tracking-widest" style={{ color: 'var(--purple)' }}>Bespoke Service</p>
                 </div>
               </div>
               <button 
@@ -99,7 +99,7 @@ export default function Chatbot() {
                       : 'border rounded-tl-none'
                   }`}
                   style={msg.role === 'user' ? {
-                    background: 'var(--gold)',
+                    background: 'var(--purple)',
                   } : {
                     background: 'var(--bg-secondary)',
                     borderColor: 'var(--border)',
@@ -116,7 +116,7 @@ export default function Chatbot() {
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className="font-display text-[9px] font-bold truncate uppercase" style={{ color: 'var(--text-primary)' }}>{s.product?.name}</p>
-                              <Link href={`/shop/${s.product?._id}`} className="text-[8px] font-bold uppercase tracking-widest hover:underline" style={{ color: 'var(--gold)' }}>View Piece</Link>
+                              <Link href={`/shop/${s.product?._id}`} className="text-[8px] font-bold uppercase tracking-widest hover:underline" style={{ color: 'var(--purple)' }}>View Piece</Link>
                             </div>
                           </div>
                         ))}
@@ -128,9 +128,9 @@ export default function Chatbot() {
               {loading && (
                 <div className="flex justify-start">
                   <div className="border rounded-xl p-2 flex gap-1" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
-                    <span className="w-1 h-1 rounded-full animate-bounce" style={{ background: 'var(--gold)' }} />
-                    <span className="w-1 h-1 rounded-full animate-bounce" style={{ background: 'var(--gold)', animationDelay: '0.2s' }} />
-                    <span className="w-1 h-1 rounded-full animate-bounce" style={{ background: 'var(--gold)', animationDelay: '0.4s' }} />
+                    <span className="w-1 h-1 rounded-full animate-bounce" style={{ background: 'var(--purple)' }} />
+                    <span className="w-1 h-1 rounded-full animate-bounce" style={{ background: 'var(--purple)', animationDelay: '0.2s' }} />
+                    <span className="w-1 h-1 rounded-full animate-bounce" style={{ background: 'var(--purple)', animationDelay: '0.4s' }} />
                   </div>
                 </div>
               )}
@@ -156,7 +156,7 @@ export default function Chatbot() {
                   disabled={!message.trim() || loading}
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-all shrink-0 shadow-sm"
                   style={{ 
-                    background: 'var(--gold)',
+                    background: 'var(--purple)',
                     color: 'white',
                     opacity: (!message.trim() || loading) ? 0.5 : 1
                   }}
@@ -173,9 +173,9 @@ export default function Chatbot() {
         onClick={() => setIsOpen(!isOpen)}
         className={`pointer-events-auto relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center shadow-xl transition-all duration-500 hover:scale-105 active:scale-95`}
         style={{ 
-          background: isOpen ? 'var(--bg-primary)' : 'var(--gold)',
-          color: isOpen ? 'var(--gold)' : 'white',
-          border: isOpen ? '1px solid var(--gold)' : 'none'
+          background: isOpen ? 'var(--bg-primary)' : 'var(--purple)',
+          color: isOpen ? 'var(--purple)' : 'white',
+          border: isOpen ? '1px solid var(--purple)' : 'none'
         }}
       >
         {isOpen ? <HiOutlineX size={24} /> : <HiOutlineChatAlt2 size={28} />}
@@ -183,7 +183,7 @@ export default function Chatbot() {
 
       <style jsx global>{`
         .custom-scrollbar::-webkit-scrollbar { width: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--gold); opacity: 0.2; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--purple); opacity: 0.2; border-radius: 10px; }
       `}</style>
 
       <style jsx global>{`

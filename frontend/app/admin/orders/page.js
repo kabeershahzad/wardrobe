@@ -12,7 +12,7 @@ import { HiOutlineChevronDown } from 'react-icons/hi';
 const STATUS_OPTIONS = ['placed', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'];
 const STATUS_COLORS = {
   placed: 'bg-blue-500/15 text-blue-400',
-  confirmed: 'bg-gold-500/15 text-gold-500',
+  confirmed: 'bg-purple-500/15 text-purple-500',
   processing: 'bg-teal-500/15 text-teal-400',
   shipped: 'bg-indigo-500/15 text-indigo-400',
   delivered: 'bg-emerald-500/15 text-emerald-400',
@@ -58,14 +58,14 @@ export default function AdminOrdersPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <div>
-            <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">Admin</span>
+            <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">Admin</span>
             <h1 className="font-display text-4xl font-bold text-[var(--text-primary)]">Orders ({total})</h1>
           </div>
           <div className="flex gap-2 flex-wrap">
             {['', ...STATUS_OPTIONS].map(s => (
               <button key={s || 'all'} onClick={() => { setFilterStatus(s); setPage(1); }}
                 className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all capitalize ${
-                  filterStatus === s ? 'bg-gold-500 text-obsidian-950' : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
+                  filterStatus === s ? 'bg-purple-500 text-obsidian-950' : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/50'
                 }`}>
                 {s || 'All'}
               </button>

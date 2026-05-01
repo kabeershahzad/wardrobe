@@ -57,18 +57,18 @@ export default function CartPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
-          <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">Shopping</span>
+          <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">Shopping</span>
           <h1 className="font-display text-5xl font-bold text-[var(--text-primary)] mt-1">Your Cart</h1>
         </motion.div>
 
         {cart.length === 0 ? (
           <div className="text-center py-24">
-            <div className="w-20 h-20 rounded-full bg-gold-500/10 flex items-center justify-center mx-auto mb-4">
-              <HiOutlineShoppingBag size={32} className="text-gold-500/50" />
+            <div className="w-20 h-20 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+              <HiOutlineShoppingBag size={32} className="text-purple-500/50" />
             </div>
             <h3 className="font-display text-2xl text-[var(--text-primary)] mb-2">Your cart is empty</h3>
             <p className="text-[var(--text-secondary)] mb-6">Add some beautiful pieces to get started</p>
-            <Link href="/shop" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-gold font-semibold text-sm">
+            <Link href="/shop" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-purple font-semibold text-sm">
               Browse Collection <HiOutlineArrowRight size={16} />
             </Link>
           </div>
@@ -91,7 +91,7 @@ export default function CartPage() {
                       </Link>
                       <div className="flex-1 min-w-0">
                         <Link href={`/shop/${item.product._id}`}>
-                          <h3 className="font-display font-semibold text-[var(--text-primary)] hover:text-gold-500 transition-colors line-clamp-1">
+                          <h3 className="font-display font-semibold text-[var(--text-primary)] hover:text-purple-500 transition-colors line-clamp-1">
                             {item.product.name}
                           </h3>
                         </Link>
@@ -102,10 +102,10 @@ export default function CartPage() {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center border border-[var(--border)] rounded-lg overflow-hidden">
                             <button onClick={() => updateQty(item.product._id, item.size, item.color, item.qty - 1)}
-                              className="w-8 h-8 flex items-center justify-center hover:bg-gold-500/10 text-[var(--text-secondary)] transition-colors">−</button>
+                              className="w-8 h-8 flex items-center justify-center hover:bg-purple-500/10 text-[var(--text-secondary)] transition-colors">−</button>
                             <span className="w-8 text-center font-mono text-sm">{item.qty}</span>
                             <button onClick={() => updateQty(item.product._id, item.size, item.color, item.qty + 1)}
-                              className="w-8 h-8 flex items-center justify-center hover:bg-gold-500/10 text-[var(--text-secondary)] transition-colors">+</button>
+                              className="w-8 h-8 flex items-center justify-center hover:bg-purple-500/10 text-[var(--text-secondary)] transition-colors">+</button>
                           </div>
                           <div className="flex items-center gap-4">
                             <span className="font-display font-bold text-[var(--text-primary)]">
@@ -126,7 +126,7 @@ export default function CartPage() {
 
             {/* Order Summary + Checkout */}
             <div className="space-y-5">
-              <div className="p-6 rounded-2xl border border-gold-500/20 sticky top-24"
+              <div className="p-6 rounded-2xl border border-purple-500/20 sticky top-24"
                 style={{ background: 'var(--card-bg)' }}>
                 <h2 className="font-display text-xl font-semibold text-[var(--text-primary)] mb-5">Order Summary</h2>
                 <div className="space-y-3 text-sm mb-5">
@@ -141,7 +141,7 @@ export default function CartPage() {
                     </span>
                   </div>
                   {shippingCost > 0 && (
-                    <p className="text-xs text-gold-500">Add PKR {(5000 - cartTotal).toLocaleString()} more for free shipping</p>
+                    <p className="text-xs text-purple-500">Add PKR {(5000 - cartTotal).toLocaleString()} more for free shipping</p>
                   )}
                   <div className="h-px bg-[var(--border)]" />
                   <div className="flex justify-between font-display text-lg font-bold text-[var(--text-primary)]">
@@ -154,7 +154,7 @@ export default function CartPage() {
                   <button onClick={() => {
                     if (!user) { toast.error('Please login'); router.push('/auth/login'); return; }
                     setStep(2);
-                  }} className="w-full py-4 rounded-xl btn-gold font-semibold flex items-center justify-center gap-2">
+                  }} className="w-full py-4 rounded-xl btn-purple font-semibold flex items-center justify-center gap-2">
                     Proceed to Checkout <HiOutlineArrowRight size={18} />
                   </button>
                 ) : (
@@ -172,7 +172,7 @@ export default function CartPage() {
                         className="input-luxury w-full px-4 py-2.5 rounded-xl text-sm" />
                     ))}
                     <button type="submit" disabled={checkingOut}
-                      className="w-full py-3.5 rounded-xl btn-gold font-semibold flex items-center justify-center gap-2 disabled:opacity-60">
+                      className="w-full py-3.5 rounded-xl btn-purple font-semibold flex items-center justify-center gap-2 disabled:opacity-60">
                       {checkingOut ? 'Placing Order...' : 'Place Order (COD)'}
                     </button>
                     <button type="button" onClick={() => setStep(1)} className="w-full text-center text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors">

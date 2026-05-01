@@ -12,7 +12,7 @@ import { HiOutlineShoppingBag, HiOutlineChevronDown, HiOutlineChevronUp } from '
 
 const STATUS_COLORS = {
   placed: 'bg-blue-500/15 text-blue-400',
-  confirmed: 'bg-gold-500/15 text-gold-500',
+  confirmed: 'bg-purple-500/15 text-purple-500',
   processing: 'bg-teal-500/15 text-teal-400',
   shipped: 'bg-indigo-500/15 text-indigo-400',
   delivered: 'bg-emerald-500/15 text-emerald-400',
@@ -45,18 +45,18 @@ export default function OrdersPage() {
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
-          <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">My Account</span>
+          <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">My Account</span>
           <h1 className="font-display text-5xl font-bold text-[var(--text-primary)] mt-1">My Orders</h1>
         </motion.div>
 
         {orders.length === 0 ? (
           <div className="text-center py-24">
-            <div className="w-20 h-20 rounded-full bg-gold-500/10 flex items-center justify-center mx-auto mb-4">
-              <HiOutlineShoppingBag size={32} className="text-gold-500/50" />
+            <div className="w-20 h-20 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+              <HiOutlineShoppingBag size={32} className="text-purple-500/50" />
             </div>
             <h3 className="font-display text-2xl text-[var(--text-primary)] mb-2">No orders yet</h3>
             <p className="text-[var(--text-secondary)] mb-6">Your orders will appear here once you shop</p>
-            <Link href="/shop" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-gold font-semibold text-sm">
+            <Link href="/shop" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-purple font-semibold text-sm">
               Start Shopping
             </Link>
           </div>
@@ -112,7 +112,7 @@ export default function OrdersPage() {
                       <div className="text-right sm:text-left">
                         <p className="font-semibold text-[var(--text-primary)] mb-1">Payment</p>
                         <p className="text-[var(--text-muted)]">Method: {order.paymentMethod}</p>
-                        <p className="text-[var(--text-muted)]">Status: <span className="text-gold-500 capitalize">{order.paymentStatus}</span></p>
+                        <p className="text-[var(--text-muted)]">Status: <span className="text-purple-500 capitalize">{order.paymentStatus}</span></p>
                       </div>
                     </div>
                   </motion.div>

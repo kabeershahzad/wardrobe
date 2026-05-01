@@ -59,14 +59,14 @@ export default function ProfilePage() {
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
           <div className="flex items-center gap-5">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-gold-400 to-gold-700 flex items-center justify-center text-obsidian-950 text-3xl font-bold font-display shadow-gold">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-400 to-purple-700 flex items-center justify-center text-obsidian-950 text-3xl font-bold font-display shadow-purple">
               {user.name?.[0]?.toUpperCase()}
             </div>
             <div>
               <h1 className="font-display text-3xl font-bold text-[var(--text-primary)]">{user.name}</h1>
               <p className="text-[var(--text-secondary)]">{user.email}</p>
               <span className={`inline-flex mt-1 px-2 py-0.5 rounded-full text-xs font-mono font-semibold ${
-                user.role === 'admin' ? 'bg-gold-500/20 text-gold-500' : 'bg-[var(--bg-secondary)] text-[var(--text-muted)]'
+                user.role === 'admin' ? 'bg-purple-500/20 text-purple-500' : 'bg-[var(--bg-secondary)] text-[var(--text-muted)]'
               }`}>{user.role}</span>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function ProfilePage() {
           {tabs.map(t => (
             <button key={t} onClick={() => setTab(t)}
               className={`px-5 py-2 rounded-lg text-sm font-semibold capitalize transition-all ${
-                tab === t ? 'bg-gold-500 text-obsidian-950' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                tab === t ? 'bg-purple-500 text-obsidian-950' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
               }`}>
               {t}
             </button>
@@ -111,7 +111,7 @@ export default function ProfilePage() {
 
               <div className="p-6 rounded-2xl border border-[var(--border)]" style={{ background: 'var(--card-bg)' }}>
                 <h2 className="font-display text-lg font-semibold text-[var(--text-primary)] mb-5 flex items-center gap-2">
-                  <HiOutlineLocationMarker className="text-gold-500" /> Address
+                  <HiOutlineLocationMarker className="text-purple-500" /> Address
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
@@ -131,7 +131,7 @@ export default function ProfilePage() {
               </div>
 
               <button type="submit" disabled={saving}
-                className="flex items-center gap-2 px-8 py-3.5 rounded-xl btn-gold font-semibold disabled:opacity-60">
+                className="flex items-center gap-2 px-8 py-3.5 rounded-xl btn-purple font-semibold disabled:opacity-60">
                 {saving ? 'Saving...' : <><HiOutlineSparkles size={18} /> Save Changes</>}
               </button>
             </form>
@@ -143,7 +143,7 @@ export default function ProfilePage() {
             <form onSubmit={handleChangePassword}>
               <div className="p-6 rounded-2xl border border-[var(--border)] max-w-md" style={{ background: 'var(--card-bg)' }}>
                 <h2 className="font-display text-lg font-semibold text-[var(--text-primary)] mb-5 flex items-center gap-2">
-                  <HiOutlineLockClosed className="text-gold-500" /> Change Password
+                  <HiOutlineLockClosed className="text-purple-500" /> Change Password
                 </h2>
                 <div className="space-y-4">
                   {[
@@ -160,7 +160,7 @@ export default function ProfilePage() {
                   ))}
                 </div>
                 <button type="submit" disabled={saving}
-                  className="mt-5 flex items-center gap-2 px-8 py-3.5 rounded-xl btn-gold font-semibold disabled:opacity-60">
+                  className="mt-5 flex items-center gap-2 px-8 py-3.5 rounded-xl btn-purple font-semibold disabled:opacity-60">
                   {saving ? 'Updating...' : 'Update Password'}
                 </button>
               </div>

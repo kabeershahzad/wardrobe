@@ -34,14 +34,14 @@ export default function Footer() {
               <span
                 className="w-6 h-6 rounded-md"
                 style={{
-                  background: 'linear-gradient(135deg, var(--gold) 0%, color-mix(in srgb, var(--gold) 38%, #7f6bff) 100%)',
-                  boxShadow: '0 0 16px color-mix(in srgb, var(--gold) 58%, transparent)',
+                  background: 'linear-gradient(135deg, var(--purple) 0%, color-mix(in srgb, var(--purple) 38%, #7f6bff) 100%)',
+                  boxShadow: '0 0 16px color-mix(in srgb, var(--purple) 58%, transparent)',
                 }}
               />
               <span className="wx-logo-text text-xl leading-none" style={{ color: 'var(--text-primary)' }}>
                 Wardrobe
               </span>
-              <span className="wx-logo-x text-2xl leading-none" style={{ color: 'var(--gold)' }}>
+              <span className="wx-logo-x text-2xl leading-none" style={{ color: 'var(--purple)' }}>
                 X
               </span>
             </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
             {new Date().getFullYear()} Wardrobe X. All rights reserved.
           </p>
           <p className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
-            <HiOutlineSparkles size={12} className="text-[var(--gold-dark)]" />
+            <HiOutlineSparkles size={12} className="text-[var(--purple-dark)]" />
             AI-powered virtual styling
           </p>
         </div>

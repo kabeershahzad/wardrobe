@@ -63,16 +63,16 @@ export default function RegisterPage() {
       >
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex flex-col items-center gap-2">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-400/20 to-gold-700/20 border border-gold-500/30 flex items-center justify-center">
-              <span className="font-display text-2xl font-bold text-gold-500">W</span>
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-400/20 to-purple-700/20 border border-purple-500/30 flex items-center justify-center">
+              <span className="font-display text-2xl font-bold text-purple-500">W</span>
             </div>
-            <span className="font-display text-2xl font-bold text-gold-shimmer">WARDROBE X</span>
+            <span className="font-display text-2xl font-bold text-purple-shimmer">WARDROBE X</span>
           </Link>
           <h1 className="font-display text-3xl font-bold text-[var(--text-primary)] mt-4 mb-1">Create Account</h1>
           <p className="text-[var(--text-secondary)] text-sm">Join thousands of fashion lovers</p>
         </div>
 
-        <div className="p-8 rounded-3xl border border-gold-500/20 shadow-glass" style={{ background: 'var(--card-bg)' }}>
+        <div className="p-8 rounded-3xl border border-purple-500/20 shadow-glass" style={{ background: 'var(--card-bg)' }}>
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name */}
             <div>
@@ -135,7 +135,7 @@ export default function RegisterPage() {
             </div>
 
             <button type="submit" disabled={loading}
-              className="w-full flex items-center justify-center gap-2 py-4 rounded-xl btn-gold font-semibold disabled:opacity-60 mt-2">
+              className="w-full flex items-center justify-center gap-2 py-4 rounded-xl btn-purple font-semibold disabled:opacity-60 mt-2">
               {loading ? (
                 <><div className="w-4 h-4 border-2 border-obsidian-950/30 border-t-obsidian-950 rounded-full animate-spin" /> Creating account...</>
               ) : (
@@ -146,7 +146,7 @@ export default function RegisterPage() {
 
           <p className="text-center text-sm text-[var(--text-muted)] mt-5">
             Already have an account?{' '}
-            <Link href="/auth/login" className="text-gold-500 hover:text-gold-400 font-semibold">Sign in</Link>
+            <Link href="/auth/login" className="text-purple-500 hover:text-purple-400 font-semibold">Sign in</Link>
           </p>
         </div>
       </motion.div>

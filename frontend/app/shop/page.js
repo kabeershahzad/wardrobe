@@ -108,7 +108,7 @@ export default function ShopPage() {
         {/* Header */}
         <div className="mb-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">Wardrobe X</span>
+            <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">Wardrobe X</span>
             <h1 className="font-display text-5xl font-bold text-[var(--text-primary)] mt-1 mb-2">
               {filters.featured ? 'Featured Collection' : filters.newArrival ? 'New Arrivals' : 'The Collection'}
             </h1>
@@ -146,14 +146,14 @@ export default function ShopPage() {
             onClick={() => setShowFilters(!showFilters)}
             className={`flex items-center gap-2 px-4 py-3 rounded-xl border transition-all font-semibold text-sm ${
               showFilters || activeFilterCount > 0
-                ? 'border-gold-500 bg-gold-500/10 text-gold-500'
-                : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
+                ? 'border-purple-500 bg-purple-500/10 text-purple-500'
+                : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/50'
             }`}
           >
             <HiOutlineAdjustments size={18} />
             Filters
             {activeFilterCount > 0 && (
-              <span className="w-5 h-5 rounded-full bg-gold-500 text-obsidian-950 text-xs font-bold flex items-center justify-center">
+              <span className="w-5 h-5 rounded-full bg-purple-500 text-obsidian-950 text-xs font-bold flex items-center justify-center">
                 {activeFilterCount}
               </span>
             )}
@@ -168,8 +168,8 @@ export default function ShopPage() {
               onClick={() => updateFilter('category', cat)}
               className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all capitalize ${
                 filters.category === cat
-                  ? 'bg-gold-500 text-obsidian-950'
-                  : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50 hover:text-[var(--text-primary)]'
+                  ? 'bg-purple-500 text-obsidian-950'
+                  : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/50 hover:text-[var(--text-primary)]'
               }`}
             >
               {cat === 'all' ? 'All Pieces' : cat}
@@ -198,8 +198,8 @@ export default function ShopPage() {
                           onClick={() => updateFilter('size', filters.size === s ? '' : s)}
                           className={`w-10 h-10 rounded-lg text-sm font-mono font-semibold border transition-all ${
                             filters.size === s
-                              ? 'border-gold-500 bg-gold-500 text-obsidian-950'
-                              : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
+                              ? 'border-purple-500 bg-purple-500 text-obsidian-950'
+                              : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/50'
                           }`}
                         >
                           {s}
@@ -243,8 +243,8 @@ export default function ShopPage() {
                           onClick={() => updateFilter(key, filters[key] === 'true' ? '' : 'true')}
                           className={`px-4 py-2 rounded-xl text-sm font-semibold border transition-all ${
                             filters[key] === 'true'
-                              ? 'border-gold-500 bg-gold-500/10 text-gold-500'
-                              : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
+                              ? 'border-purple-500 bg-purple-500/10 text-purple-500'
+                              : 'border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/50'
                           }`}
                         >
                           {label}
@@ -272,12 +272,12 @@ export default function ShopPage() {
           <CardSkeleton count={12} />
         ) : products.length === 0 ? (
           <div className="text-center py-24">
-            <div className="w-20 h-20 rounded-full bg-gold-500/10 flex items-center justify-center mx-auto mb-4">
-              <HiOutlineSearch size={32} className="text-gold-500/50" />
+            <div className="w-20 h-20 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+              <HiOutlineSearch size={32} className="text-purple-500/50" />
             </div>
             <h3 className="font-display text-2xl text-[var(--text-primary)] mb-2">No products found</h3>
             <p className="text-[var(--text-secondary)] mb-6">Try adjusting your filters or search term</p>
-            <button onClick={clearFilters} className="px-6 py-3 rounded-xl btn-gold font-semibold text-sm">
+            <button onClick={clearFilters} className="px-6 py-3 rounded-xl btn-purple font-semibold text-sm">
               Clear Filters
             </button>
           </div>
@@ -296,8 +296,8 @@ export default function ShopPage() {
                     onClick={() => setFilters(f => ({ ...f, page: i + 1 }))}
                     className={`w-10 h-10 rounded-xl font-mono text-sm font-semibold transition-all ${
                       pagination.page === i + 1
-                        ? 'bg-gold-500 text-obsidian-950'
-                        : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
+                        ? 'bg-purple-500 text-obsidian-950'
+                        : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/50'
                     }`}
                   >
                     {i + 1}

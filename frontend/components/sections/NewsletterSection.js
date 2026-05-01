@@ -32,7 +32,7 @@ export default function NewsletterSection() {
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
               <span className="floating-data-tag mb-4 inline-block">Join the Protocol</span>
-              <h2 className="section-title text-4xl sm:text-5xl text-[var(--text-primary)] mt-2 italic">Get <span className="text-gradient-gold">10% Off</span> First Synthesis</h2>
+              <h2 className="section-title text-4xl sm:text-5xl text-[var(--text-primary)] mt-2 italic">Get <span className="text-gradient-purple">10% Off</span> First Synthesis</h2>
               <p className="text-[var(--text-secondary)] max-w-xl mt-6 text-lg font-light">
                 Join our network to receive technical updates on new material drops and exclusive access to the AI synthesis engine.
               </p>
@@ -44,7 +44,7 @@ export default function NewsletterSection() {
                   'Neural Style Optimization',
                 ].map((benefit) => (
                   <p key={benefit} className="flex items-center gap-3 text-sm text-[var(--text-secondary)] font-medium">
-                    <HiOutlineCheckCircle size={18} className="text-var(--gold)" />
+                    <HiOutlineCheckCircle size={18} className="text-var(--purple)" />
                     {benefit}
                   </p>
                 ))}
@@ -54,7 +54,7 @@ export default function NewsletterSection() {
             <div className="rounded-2xl border p-5 sm:p-6" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--text-muted)]">Welcome Offer</p>
               <p className="font-display text-3xl text-[var(--text-primary)] mt-2 inline-flex items-center gap-2">
-                <HiOutlineGift size={26} className="text-[var(--gold-dark)]" />
+                <HiOutlineGift size={26} className="text-[var(--purple-dark)]" />
                 Save 10% today
               </p>
 
@@ -70,7 +70,7 @@ export default function NewsletterSection() {
                     required
                   />
                 </div>
-                <button type="submit" disabled={loading} className="w-full px-6 py-3 rounded-lg btn-gold text-sm disabled:opacity-70">
+                <button type="submit" disabled={loading} className="w-full px-6 py-3 rounded-lg btn-purple text-sm disabled:opacity-70">
                   {loading ? 'Joining...' : 'Unlock My Discount'}
                 </button>
               </form>

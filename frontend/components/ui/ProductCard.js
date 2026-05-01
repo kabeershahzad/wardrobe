@@ -98,7 +98,7 @@ export default function ProductCard({ product, index = 0 }) {
         <div className="absolute inset-x-0 bottom-0 z-20 p-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
           <Link
             href={`/tryon?product=${product._id}`}
-            className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl btn-gold text-xs font-bold shadow-lg"
+            className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl btn-purple text-xs font-bold shadow-lg"
           >
             <HiOutlineSparkles size={16} /> Try On Virtually
           </Link>
@@ -118,7 +118,7 @@ export default function ProductCard({ product, index = 0 }) {
 
         <div className="flex items-center gap-1 mt-2 mb-3">
           {[...Array(5)].map((_, i) => (
-            <HiStar key={i} size={12} className={i < Math.round(product.rating) ? 'text-[var(--gold)]' : 'text-[var(--border)]'} />
+            <HiStar key={i} size={12} className={i < Math.round(product.rating) ? 'text-[var(--purple)]' : 'text-[var(--border)]'} />
           ))}
           {product.reviewCount > 0 && <span className="text-xs text-[var(--text-muted)] ml-1">({product.reviewCount})</span>}
         </div>

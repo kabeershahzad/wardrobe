@@ -112,10 +112,10 @@ export default function AdminProductsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">Admin</span>
+            <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">Admin</span>
             <h1 className="font-display text-4xl font-bold text-[var(--text-primary)]">Products</h1>
           </div>
-          <button onClick={openCreate} className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-gold font-semibold text-sm">
+          <button onClick={openCreate} className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-purple font-semibold text-sm">
             <HiOutlinePlus size={18} /> Add Product
           </button>
         </div>
@@ -156,14 +156,14 @@ export default function AdminProductsPage() {
                         <td className="px-5 py-3 text-[var(--text-secondary)]">{product.stock}</td>
                         <td className="px-5 py-3">
                           <div className="flex flex-wrap gap-1">
-                            {product.isFeatured && <span className="px-2 py-0.5 rounded-full text-xs bg-gold-500/15 text-gold-500">Featured</span>}
+                            {product.isFeatured && <span className="px-2 py-0.5 rounded-full text-xs bg-purple-500/15 text-purple-500">Featured</span>}
                             {product.isNewArrival && <span className="px-2 py-0.5 rounded-full text-xs bg-emerald-500/15 text-emerald-400">New</span>}
                             {!product.isFeatured && !product.isNewArrival && <span className="px-2 py-0.5 rounded-full text-xs bg-[var(--bg-secondary)] text-[var(--text-muted)]">Active</span>}
                           </div>
                         </td>
                         <td className="px-5 py-3">
                           <div className="flex gap-2">
-                            <button onClick={() => openEdit(product)} className="p-1.5 rounded-lg border border-[var(--border)] text-[var(--text-muted)] hover:text-gold-500 hover:border-gold-500/50 transition-all">
+                            <button onClick={() => openEdit(product)} className="p-1.5 rounded-lg border border-[var(--border)] text-[var(--text-muted)] hover:text-purple-500 hover:border-purple-500/50 transition-all">
                               <HiOutlinePencil size={16} />
                             </button>
                             <button onClick={() => handleDelete(product._id)} className="p-1.5 rounded-lg border border-[var(--border)] text-[var(--text-muted)] hover:text-red-400 hover:border-red-500/30 transition-all">
@@ -183,7 +183,7 @@ export default function AdminProductsPage() {
               <div className="flex justify-center gap-2 mt-6">
                 {[...Array(pagination.pages)].map((_, i) => (
                   <button key={i} onClick={() => setPage(i + 1)}
-                    className={`w-10 h-10 rounded-xl text-sm font-mono font-semibold transition-all ${page === i + 1 ? 'bg-gold-500 text-obsidian-950' : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-gold-500/50'
+                    className={`w-10 h-10 rounded-xl text-sm font-mono font-semibold transition-all ${page === i + 1 ? 'bg-purple-500 text-obsidian-950' : 'border border-[var(--border)] text-[var(--text-secondary)] hover:border-purple-500/50'
                       }`}>
                     {i + 1}
                   </button>
@@ -201,7 +201,7 @@ export default function AdminProductsPage() {
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
             onClick={(e) => e.target === e.currentTarget && setShowModal(false)}>
             <motion.div initial={{ scale: 0.95, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.95 }}
-              className="w-full max-w-2xl rounded-3xl border border-gold-500/20 overflow-hidden max-h-[90vh] overflow-y-auto"
+              className="w-full max-w-2xl rounded-3xl border border-purple-500/20 overflow-hidden max-h-[90vh] overflow-y-auto"
               style={{ background: 'var(--card-bg)' }}>
               <div className="flex items-center justify-between p-6 border-b border-[var(--border)]">
                 <h2 className="font-display text-xl font-semibold text-[var(--text-primary)]">
@@ -265,7 +265,7 @@ export default function AdminProductsPage() {
                     {SIZES_ALL.map(s => (
                       <button key={s} type="button"
                         onClick={() => setForm(f => ({ ...f, sizes: f.sizes.includes(s) ? f.sizes.filter(x => x !== s) : [...f.sizes, s] }))}
-                        className={`w-12 h-10 rounded-lg text-sm font-mono border transition-all ${form.sizes.includes(s) ? 'border-gold-500 bg-gold-500 text-obsidian-950 font-bold' : 'border-[var(--border)] text-[var(--text-muted)] hover:border-gold-500/50'
+                        className={`w-12 h-10 rounded-lg text-sm font-mono border transition-all ${form.sizes.includes(s) ? 'border-purple-500 bg-purple-500 text-obsidian-950 font-bold' : 'border-[var(--border)] text-[var(--text-muted)] hover:border-purple-500/50'
                           }`}>{s}
                       </button>
                     ))}
@@ -280,7 +280,7 @@ export default function AdminProductsPage() {
                   ].map(({ key, label }) => (
                     <label key={key} className="flex items-center gap-2 cursor-pointer">
                       <input type="checkbox" checked={form[key]} onChange={e => setForm(f => ({ ...f, [key]: e.target.checked }))}
-                        className="w-4 h-4 accent-gold-500" />
+                        className="w-4 h-4 accent-purple-500" />
                       <span className="text-sm text-[var(--text-primary)]">{label}</span>
                     </label>
                   ))}
@@ -295,10 +295,10 @@ export default function AdminProductsPage() {
                     </div>
 
                     {/* AI Try-On note */}
-                    <div className="p-3 rounded-xl border border-gold-500/25 bg-gold-500/5">
-                      <p className="text-xs font-semibold text-gold-500 mb-1">⚡ AI Try-On Tip</p>
+                    <div className="p-3 rounded-xl border border-purple-500/25 bg-purple-500/5">
+                      <p className="text-xs font-semibold text-purple-500 mb-1">⚡ AI Try-On Tip</p>
                       <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                        The <span className="text-gold-400 font-semibold">Primary Image</span> is what Gemini AI uses for virtual try-on.
+                        The <span className="text-purple-400 font-semibold">Primary Image</span> is what Gemini AI uses for virtual try-on.
                         For best results, set a <span className="text-white font-medium">clear front-facing product shot on a white/plain background</span> — no model, no props, no clutter.
                         Avoid setting a model photo as primary as it confuses the AI.
                       </p>
@@ -314,7 +314,7 @@ export default function AdminProductsPage() {
                     {files.length > 0 && (
                       <div>
                         <p className="text-xs text-[var(--text-muted)] mb-2">
-                          Click an image to set it as <span className="text-gold-500 font-semibold">Primary</span> (used for AI try-on &amp; product card)
+                          Click an image to set it as <span className="text-purple-500 font-semibold">Primary</span> (used for AI try-on &amp; product card)
                         </p>
                         <div className="grid grid-cols-5 gap-2">
                           {files.map((file, i) => {
@@ -326,14 +326,14 @@ export default function AdminProductsPage() {
                                 onClick={() => setPrimaryIndex(i)}
                                 className="relative aspect-square rounded-xl overflow-hidden cursor-pointer border-2 transition-all"
                                 style={{
-                                  borderColor: isPrimary ? 'var(--gold)' : 'var(--border)',
-                                  boxShadow: isPrimary ? '0 0 0 2px var(--gold)' : 'none',
+                                  borderColor: isPrimary ? 'var(--purple)' : 'var(--border)',
+                                  boxShadow: isPrimary ? '0 0 0 2px var(--purple)' : 'none',
                                 }}
                               >
                                 <img src={url} alt={`img-${i}`} className="w-full h-full object-cover" />
                                 {isPrimary && (
                                   <div className="absolute inset-x-0 bottom-0 py-1 text-center"
-                                    style={{ background: 'var(--gold)' }}>
+                                    style={{ background: 'var(--purple)' }}>
                                     <span className="font-mono text-[9px] font-bold text-obsidian-950 uppercase tracking-widest">
                                       Primary
                                     </span>
@@ -355,7 +355,7 @@ export default function AdminProductsPage() {
 
                 <div className="flex gap-3 pt-2">
                   <button type="submit" disabled={saving}
-                    className="flex-1 py-3.5 rounded-xl btn-gold font-semibold disabled:opacity-60">
+                    className="flex-1 py-3.5 rounded-xl btn-purple font-semibold disabled:opacity-60">
                     {saving ? 'Saving...' : editingProduct ? 'Update Product' : 'Create Product'}
                   </button>
                   <button type="button" onClick={() => setShowModal(false)}

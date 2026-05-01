@@ -232,7 +232,7 @@ function TryOnPageInner() {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">
+          <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">
             Wardrobe X AI
           </span>
           <h1 className="font-display text-5xl sm:text-6xl font-bold text-[var(--text-primary)] mt-1 mb-2">
@@ -254,7 +254,7 @@ function TryOnPageInner() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${activeTab === tab.id
-                ? 'bg-gold-500 text-obsidian-950'
+                ? 'bg-purple-500 text-obsidian-950'
                 : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
             >
@@ -285,7 +285,7 @@ function TryOnPageInner() {
               >
                 {/* Step header */}
                 <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--border)]">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${userImagePreview ? 'bg-gold-500 text-obsidian-950' : 'bg-gold-500/20 text-gold-500'
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${userImagePreview ? 'bg-purple-500 text-obsidian-950' : 'bg-purple-500/20 text-purple-500'
                     }`}>
                     {userImagePreview ? '✓' : '1'}
                   </div>
@@ -302,7 +302,7 @@ function TryOnPageInner() {
                 <div className="p-5">
                   {userImagePreview ? (
                     <div className="flex items-center gap-4">
-                      <div className="w-20 h-28 rounded-xl overflow-hidden shrink-0 border border-gold-500/30">
+                      <div className="w-20 h-28 rounded-xl overflow-hidden shrink-0 border border-purple-500/30">
                         <img src={userImagePreview} alt="Your photo"
                           className="w-full h-full object-cover" />
                       </div>
@@ -331,14 +331,14 @@ function TryOnPageInner() {
                     <div
                       {...getRootProps()}
                       className={`border-2 border-dashed rounded-xl p-10 text-center cursor-pointer transition-all ${isDragActive
-                        ? 'border-gold-500 bg-gold-500/10'
-                        : 'border-[var(--border)] hover:border-gold-500/50 hover:bg-gold-500/5'
+                        ? 'border-purple-500 bg-purple-500/10'
+                        : 'border-[var(--border)] hover:border-purple-500/50 hover:bg-purple-500/5'
                         }`}
                     >
                       <input {...getInputProps()} />
-                      <div className={`w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 ${isDragActive ? 'bg-gold-500/20' : 'bg-[var(--bg-secondary)]'
+                      <div className={`w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 ${isDragActive ? 'bg-purple-500/20' : 'bg-[var(--bg-secondary)]'
                         }`}>
-                        <HiOutlineUpload size={28} className={isDragActive ? 'text-gold-500' : 'text-[var(--text-muted)]'} />
+                        <HiOutlineUpload size={28} className={isDragActive ? 'text-purple-500' : 'text-[var(--text-muted)]'} />
                       </div>
                       <p className="font-semibold text-[var(--text-primary)] mb-1 text-lg">
                         {isDragActive ? 'Drop your photo here' : 'Upload Your Photo'}
@@ -366,7 +366,7 @@ function TryOnPageInner() {
                 }}
               >
                 <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--border)]">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${selectedProduct ? 'bg-gold-500 text-obsidian-950' : 'bg-gold-500/20 text-gold-500'
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${selectedProduct ? 'bg-purple-500 text-obsidian-950' : 'bg-purple-500/20 text-purple-500'
                     }`}>
                     {selectedProduct ? '✓' : '2'}
                   </div>
@@ -383,7 +383,7 @@ function TryOnPageInner() {
                 <div className="p-5">
                   {/* Selected product preview */}
                   {selectedProduct && (
-                    <div className="flex items-center gap-4 mb-4 p-3 rounded-xl border border-gold-500/20 bg-gold-500/5">
+                    <div className="flex items-center gap-4 mb-4 p-3 rounded-xl border border-purple-500/20 bg-purple-500/5">
                       <div className="w-14 h-18 rounded-lg overflow-hidden bg-[var(--bg-secondary)] shrink-0"
                         style={{ height: '72px' }}>
                         {getProductImg(selectedProduct) && (
@@ -395,7 +395,7 @@ function TryOnPageInner() {
                         <p className="font-semibold text-[var(--text-primary)] truncate text-sm">
                           {selectedProduct.name}
                         </p>
-                        <p className="text-xs text-gold-500 capitalize">{selectedProduct.category}</p>
+                        <p className="text-xs text-purple-500 capitalize">{selectedProduct.category}</p>
                         <p className="text-sm font-bold text-[var(--text-primary)] mt-0.5">
                           PKR {selectedProduct.price?.toLocaleString()}
                         </p>
@@ -416,8 +416,8 @@ function TryOnPageInner() {
                         key={cat}
                         onClick={() => setCategoryFilter(cat)}
                         className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all capitalize shrink-0 ${categoryFilter === cat
-                          ? 'bg-gold-500 text-obsidian-950'
-                          : 'border border-[var(--border)] text-[var(--text-muted)] hover:border-gold-500/50 hover:text-[var(--text-primary)]'
+                          ? 'bg-purple-500 text-obsidian-950'
+                          : 'border border-[var(--border)] text-[var(--text-muted)] hover:border-purple-500/50 hover:text-[var(--text-primary)]'
                           }`}
                       >
                         {cat === 'all' ? 'All' : cat}
@@ -437,8 +437,8 @@ function TryOnPageInner() {
                           key={p._id}
                           onClick={() => setSelectedProduct(p)}
                           className={`relative aspect-[3/4] rounded-xl overflow-hidden border-2 transition-all group ${selectedProduct?._id === p._id
-                            ? 'border-gold-500 shadow-gold'
-                            : 'border-transparent hover:border-gold-500/60'
+                            ? 'border-purple-500 shadow-purple'
+                            : 'border-transparent hover:border-purple-500/60'
                             }`}
                           style={{ background: 'var(--bg-secondary)' }}
                         >
@@ -451,8 +451,8 @@ function TryOnPageInner() {
                             </div>
                           )}
                           {selectedProduct?._id === p._id && (
-                            <div className="absolute inset-0 bg-gold-500/20 flex items-center justify-center">
-                              <span className="w-6 h-6 rounded-full bg-gold-500 text-obsidian-950 flex items-center justify-center text-xs font-bold">✓</span>
+                            <div className="absolute inset-0 bg-purple-500/20 flex items-center justify-center">
+                              <span className="w-6 h-6 rounded-full bg-purple-500 text-obsidian-950 flex items-center justify-center text-xs font-bold">✓</span>
                             </div>
                           )}
                           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -464,7 +464,7 @@ function TryOnPageInner() {
                   )}
 
                   <Link href="/shop"
-                    className="inline-flex items-center gap-1.5 mt-3 text-xs text-gold-500 hover:text-gold-400 transition-colors font-semibold">
+                    className="inline-flex items-center gap-1.5 mt-3 text-xs text-purple-500 hover:text-purple-400 transition-colors font-semibold">
                     <HiOutlineShoppingBag size={14} />
                     Browse full collection
                     <HiOutlineChevronRight size={12} />
@@ -487,7 +487,7 @@ function TryOnPageInner() {
                     }}
                   >
                     <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--border)]">
-                      <div className="w-8 h-8 rounded-full bg-gold-500 text-obsidian-950 flex items-center justify-center font-bold text-sm shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-purple-500 text-obsidian-950 flex items-center justify-center font-bold text-sm shrink-0">
                         {processing ? <Spinner size="sm" /> : '✓'}
                       </div>
                       <div>
@@ -505,10 +505,10 @@ function TryOnPageInner() {
                       {processing && (
                         <div className="text-center py-10">
                           <div className="relative w-20 h-20 mx-auto mb-5">
-                            <div className="absolute inset-0 rounded-full border-4 border-gold-500/20 animate-ping" />
-                            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-gold-500 animate-spin" />
-                            <div className="absolute inset-2 rounded-full bg-gold-500/10 flex items-center justify-center">
-                              <HiOutlineSparkles className="text-gold-500" size={22} />
+                            <div className="absolute inset-0 rounded-full border-4 border-purple-500/20 animate-ping" />
+                            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-purple-500 animate-spin" />
+                            <div className="absolute inset-2 rounded-full bg-purple-500/10 flex items-center justify-center">
+                              <HiOutlineSparkles className="text-purple-500" size={22} />
                             </div>
                           </div>
                           <p className="font-display text-2xl text-[var(--text-primary)] mb-1">
@@ -517,9 +517,9 @@ function TryOnPageInner() {
                           <p className="text-sm text-[var(--text-muted)] mb-4">
                             This usually takes 15–30 seconds
                           </p>
-                          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-500/10 border border-gold-500/20">
-                            <HiOutlineClock size={14} className="text-gold-500" />
-                            <span className="font-mono text-sm text-gold-500">{processingTime}s elapsed</span>
+                          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20">
+                            <HiOutlineClock size={14} className="text-purple-500" />
+                            <span className="font-mono text-sm text-purple-500">{processingTime}s elapsed</span>
                           </div>
                         </div>
                       )}
@@ -555,10 +555,10 @@ function TryOnPageInner() {
 
                             {/* Panel 3 — Result */}
                             <div>
-                              <p className="font-mono text-[10px] text-gold-500 uppercase tracking-widest mb-2 text-center">
+                              <p className="font-mono text-[10px] text-purple-500 uppercase tracking-widest mb-2 text-center">
                                 ✨ Result
                               </p>
-                              <div className="aspect-[3/4] rounded-xl overflow-hidden border-2 border-gold-500/50 shadow-gold relative">
+                              <div className="aspect-[3/4] rounded-xl overflow-hidden border-2 border-purple-500/50 shadow-purple relative">
                                 <img src={result.resultImage} alt="Try-on result"
                                   className="w-full h-full object-cover" />
                                 <div className="absolute top-1.5 right-1.5">
@@ -583,15 +583,15 @@ function TryOnPageInner() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0 }}
-                                className="mb-5 rounded-2xl border border-gold-500/20 overflow-hidden"
+                                className="mb-5 rounded-2xl border border-purple-500/20 overflow-hidden"
                                 style={{ background: 'var(--bg-secondary)' }}
                               >
-                                <div className="flex items-center gap-2 px-4 py-3 border-b border-gold-500/10">
+                                <div className="flex items-center gap-2 px-4 py-3 border-b border-purple-500/10">
                                   <span className="text-lg">🧍</span>
                                   <p className="font-display text-base font-semibold text-[var(--text-primary)]">
                                     360° Try-On View
                                   </p>
-                                  <span className="ml-auto font-mono text-xs text-gold-500 bg-gold-500/10 px-2 py-0.5 rounded-full">
+                                  <span className="ml-auto font-mono text-xs text-purple-500 bg-purple-500/10 px-2 py-0.5 rounded-full">
                                     AI Angles · Smooth Rotation
                                   </span>
                                   <button onClick={() => { setShow3D(false); setVideoResult(null); }}
@@ -619,7 +619,7 @@ function TryOnPageInner() {
                             {/* Download image */}
                             <button
                               onClick={handleDownloadImage}
-                              className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-gold font-semibold text-sm"
+                              className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-purple font-semibold text-sm"
                             >
                               <HiOutlineDownload size={16} />
                               Download Image
@@ -641,7 +641,7 @@ function TryOnPageInner() {
                             ) : (
                               <button
                                 onClick={() => { setShow3D(false); setVideoResult(null); }}
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-outline-gold font-semibold text-sm"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-outline-purple font-semibold text-sm"
                               >
                                 <HiOutlineX size={16} /> Close 360°
                               </button>
@@ -650,7 +650,7 @@ function TryOnPageInner() {
                             {/* Try another */}
                             <button
                               onClick={resetStudio}
-                              className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-outline-gold font-semibold text-sm"
+                              className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-outline-purple font-semibold text-sm"
                             >
                               <HiOutlineRefresh size={16} />
                               Try Another
@@ -718,7 +718,7 @@ function TryOnPageInner() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="p-5 rounded-2xl border border-gold-500/20 sticky top-24"
+                className="p-5 rounded-2xl border border-purple-500/20 sticky top-24"
                 style={{ background: 'var(--card-bg)' }}
               >
                 <h3 className="font-display text-xl font-semibold text-[var(--text-primary)] mb-4">
@@ -732,7 +732,7 @@ function TryOnPageInner() {
                     { label: 'Outfit selected', done: !!selectedProduct },
                   ].map(({ label, done }) => (
                     <div key={label} className="flex items-center gap-3 text-sm">
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-all ${done ? 'bg-gold-500' : 'bg-[var(--border)]'
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-all ${done ? 'bg-purple-500' : 'bg-[var(--border)]'
                         }`}>
                         {done
                           ? <span className="text-obsidian-950 text-xs font-bold">✓</span>
@@ -748,14 +748,14 @@ function TryOnPageInner() {
 
                 {!user ? (
                   <div className="text-center">
-                    <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center mx-auto mb-3">
-                      <HiOutlineLockClosed size={22} className="text-gold-500" />
+                    <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-3">
+                      <HiOutlineLockClosed size={22} className="text-purple-500" />
                     </div>
                     <p className="text-sm text-[var(--text-muted)] mb-4">
                       Sign in to use AI try-on
                     </p>
                     <Link href="/auth/login"
-                      className="block w-full py-3 rounded-xl btn-gold text-center font-semibold text-sm">
+                      className="block w-full py-3 rounded-xl btn-purple text-center font-semibold text-sm">
                       Sign In
                     </Link>
                   </div>
@@ -764,7 +764,7 @@ function TryOnPageInner() {
                     onClick={handleTryOn}
                     disabled={!userImage || !selectedProduct || processing}
                     className={`w-full flex items-center justify-center gap-2.5 py-4 rounded-xl font-semibold text-sm transition-all ${userImage && selectedProduct && !processing
-                      ? 'btn-gold'
+                      ? 'btn-purple'
                       : 'bg-[var(--bg-secondary)] text-[var(--text-muted)] cursor-not-allowed'
                       }`}
                   >
@@ -800,7 +800,7 @@ function TryOnPageInner() {
                     'Wear form-fitting clothing',
                   ].map(tip => (
                     <li key={tip} className="flex items-start gap-2 text-xs text-[var(--text-muted)]">
-                      <span className="text-gold-500 mt-0.5 shrink-0">·</span>
+                      <span className="text-purple-500 mt-0.5 shrink-0">·</span>
                       {tip}
                     </li>
                   ))}
@@ -839,8 +839,8 @@ function TryOnPageInner() {
           <div>
             {!user ? (
               <div className="text-center py-24">
-                <div className="w-20 h-20 rounded-full bg-gold-500/10 flex items-center justify-center mx-auto mb-4">
-                  <HiOutlineLockClosed size={32} className="text-gold-500/50" />
+                <div className="w-20 h-20 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+                  <HiOutlineLockClosed size={32} className="text-purple-500/50" />
                 </div>
                 <h3 className="font-display text-2xl text-[var(--text-primary)] mb-2">
                   Sign in to view history
@@ -849,14 +849,14 @@ function TryOnPageInner() {
                   Your past try-ons will appear here
                 </p>
                 <Link href="/auth/login"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-gold font-semibold text-sm">
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-purple font-semibold text-sm">
                   Sign In
                 </Link>
               </div>
             ) : history.length === 0 ? (
               <div className="text-center py-24">
-                <div className="w-20 h-20 rounded-full bg-gold-500/10 flex items-center justify-center mx-auto mb-4">
-                  <HiOutlinePhotograph size={32} className="text-gold-500/50" />
+                <div className="w-20 h-20 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+                  <HiOutlinePhotograph size={32} className="text-purple-500/50" />
                 </div>
                 <h3 className="font-display text-2xl text-[var(--text-primary)] mb-2">
                   No try-ons yet
@@ -866,7 +866,7 @@ function TryOnPageInner() {
                 </p>
                 <button
                   onClick={() => setActiveTab('studio')}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-gold font-semibold text-sm"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-purple font-semibold text-sm"
                 >
                   <HiOutlineSparkles size={16} />
                   Open Studio
@@ -903,7 +903,7 @@ function TryOnPageInner() {
                         {/* Status badge */}
                         <div className={`absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold ${tryon.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400'
                           : tryon.status === 'failed' ? 'bg-red-500/20 text-red-400'
-                            : 'bg-gold-500/20 text-gold-500'
+                            : 'bg-purple-500/20 text-purple-500'
                           }`}>
                           {tryon.status}
                         </div>
@@ -931,7 +931,7 @@ function TryOnPageInner() {
                                 a.download = `wardrobex-${tryon._id}.png`;
                                 a.click();
                               }}
-                              className="flex items-center gap-1 text-xs text-gold-500 hover:text-gold-400 font-semibold transition-colors"
+                              className="flex items-center gap-1 text-xs text-purple-500 hover:text-purple-400 font-semibold transition-colors"
                             >
                               <HiOutlineDownload size={13} />
                               Download

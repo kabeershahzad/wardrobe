@@ -93,8 +93,8 @@ export default function TryOn360Viewer({ frames = [], delay = 500 }) {
         }}
       >
         <div className="relative w-12 h-12 mb-4">
-          <div className="absolute inset-0 rounded-full border-2" style={{ borderColor: 'color-mix(in srgb, var(--gold) 32%, transparent)' }} />
-          <div className="absolute inset-0 rounded-full border-2 border-transparent animate-spin" style={{ borderTopColor: 'var(--gold)' }} />
+          <div className="absolute inset-0 rounded-full border-2" style={{ borderColor: 'color-mix(in srgb, var(--purple) 32%, transparent)' }} />
+          <div className="absolute inset-0 rounded-full border-2 border-transparent animate-spin" style={{ borderTopColor: 'var(--purple)' }} />
         </div>
 
         <p className="font-display text-xl text-[var(--text-primary)] mb-1">
@@ -115,7 +115,7 @@ export default function TryOn360Viewer({ frames = [], delay = 500 }) {
         className="relative rounded-[20px] overflow-hidden border"
         style={{
           background: '#0f0f10',
-          borderColor: 'color-mix(in srgb, var(--gold) 30%, var(--border))',
+          borderColor: 'color-mix(in srgb, var(--purple) 30%, var(--border))',
           cursor: isDragging ? 'grabbing' : 'grab',
         }}
         onMouseDown={(e) => {
@@ -171,7 +171,7 @@ export default function TryOn360Viewer({ frames = [], delay = 500 }) {
             className="h-full rounded-full"
             style={{
               width: `${progress}%`,
-              background: 'linear-gradient(90deg, var(--gold-dark), var(--gold), #c6a47f)',
+              background: 'linear-gradient(90deg, var(--purple-dark), var(--purple), #c6a47f)',
               transition: 'width 80ms linear',
             }}
           />
@@ -184,7 +184,7 @@ export default function TryOn360Viewer({ frames = [], delay = 500 }) {
             return (
               <button
                 key={`${label}-${i}`}
-                className={`font-mono text-[10px] px-1 transition-colors ${active ? 'text-[var(--gold-dark)] font-bold' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
+                className={`font-mono text-[10px] px-1 transition-colors ${active ? 'text-[var(--purple-dark)] font-bold' : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'}`}
                 onClick={() => {
                   clearInterval(timerRef.current);
                   setIndex(target);

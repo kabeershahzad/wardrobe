@@ -86,12 +86,12 @@ export default function HeroSection() {
     <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background HUD Layer */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute top-1/4 left-10 w-64 h-px bg-gradient-to-r from-var(--gold) to-transparent" />
-        <div className="absolute top-1/3 right-10 w-px h-64 bg-gradient-to-b from-var(--gold) to-transparent" />
+        <div className="absolute top-1/4 left-10 w-64 h-px bg-gradient-to-r from-var(--purple) to-transparent" />
+        <div className="absolute top-1/3 right-10 w-px h-64 bg-gradient-to-b from-var(--purple) to-transparent" />
         <motion.div 
           animate={{ opacity: [0.1, 0.3, 0.1] }}
           transition={{ duration: 4, repeat: Infinity }}
-          className="absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full border border-var(--gold)/20 mask-radial" 
+          className="absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full border border-var(--purple)/20 mask-radial" 
         />
       </div>
 
@@ -125,7 +125,7 @@ export default function HeroSection() {
                   initial={{ y: '100%' }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="block text-gradient-gold italic"
+                  className="block text-gradient-purple italic"
                 >
                   Synthesized
                 </motion.span>
@@ -147,7 +147,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mt-12 flex flex-wrap gap-6 items-center"
             >
-              <Link href="/shop" className="group relative px-10 py-5 rounded-full btn-gold text-sm font-black uppercase tracking-widest overflow-hidden transition-all hover:scale-105">
+              <Link href="/shop" className="group relative px-10 py-5 rounded-full btn-purple text-sm font-black uppercase tracking-widest overflow-hidden transition-all hover:scale-105">
                 <span className="relative z-10">Enter Studio</span>
                 <motion.div 
                   className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
@@ -155,8 +155,8 @@ export default function HeroSection() {
                 />
               </Link>
               <Link href="/tryon" className="flex items-center gap-3 text-sm font-bold uppercase tracking-widest group">
-                <span className="w-12 h-12 rounded-full border border-var(--border) flex items-center justify-center group-hover:border-var(--gold) transition-colors">
-                  <HiOutlineSparkles className="text-var(--gold)" />
+                <span className="w-12 h-12 rounded-full border border-var(--border) flex items-center justify-center group-hover:border-var(--purple) transition-colors">
+                  <HiOutlineSparkles className="text-var(--purple)" />
                 </span>
                 AI Prototype
               </Link>
@@ -198,7 +198,7 @@ export default function HeroSection() {
                 <motion.div 
                   animate={{ width: ['20%', '90%', '40%', '70%'] }}
                   transition={{ duration: 4, repeat: Infinity }}
-                  className="h-full bg-var(--gold)" 
+                  className="h-full bg-var(--purple)" 
                 />
               </div>
             </div>
@@ -206,10 +206,10 @@ export default function HeroSection() {
             <div className="absolute -bottom-6 -right-6 z-20 hud-element p-4 rounded-xl flex items-center gap-4">
               <div className="text-right">
                 <p className="text-[10px] font-mono text-white/50">GRID_COORD</p>
-                <p className="text-xs font-mono text-var(--gold)">40.7128° N</p>
+                <p className="text-xs font-mono text-var(--purple)">40.7128° N</p>
               </div>
               <div className="w-px h-8 bg-white/10" />
-              <HiOutlineShieldCheck className="text-var(--gold)" size={24} />
+              <HiOutlineShieldCheck className="text-var(--purple)" size={24} />
             </div>
 
             <div className="relative group section-shell overflow-hidden aspect-[3/4] cyber-glow">
@@ -226,7 +226,7 @@ export default function HeroSection() {
                     <img src={activeSlide.image} alt="" className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" />
                   ) : (
                     <div className="w-full h-full bg-var(--bg-tertiary) flex items-center justify-center">
-                      <HiOutlineShoppingBag size={48} className="text-var(--gold)/20" />
+                      <HiOutlineShoppingBag size={48} className="text-var(--purple)/20" />
                     </div>
                   )}
                 </motion.div>
@@ -236,7 +236,7 @@ export default function HeroSection() {
               <motion.div 
                 animate={{ top: ['-10%', '110%'] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-var(--gold) to-transparent z-10 shadow-[0_0_15px_var(--gold)]" 
+                className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-var(--purple) to-transparent z-10 shadow-[0_0_15px_var(--purple)]" 
               />
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
@@ -248,7 +248,7 @@ export default function HeroSection() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <p className="font-mono text-[10px] text-var(--gold) tracking-[0.3em] uppercase mb-2">Selected SKU</p>
+                  <p className="font-mono text-[10px] text-var(--purple) tracking-[0.3em] uppercase mb-2">Selected SKU</p>
                   <h3 className="font-display text-3xl text-white leading-none">{activeSlide?.name || 'Curated Batch'}</h3>
                 </motion.div>
               </div>

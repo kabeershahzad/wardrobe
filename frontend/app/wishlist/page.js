@@ -45,20 +45,20 @@ export default function WishlistPage() {
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
-          <span className="font-mono text-xs text-gold-500 tracking-widest uppercase">Your Saves</span>
+          <span className="font-mono text-xs text-purple-500 tracking-widest uppercase">Your Saves</span>
           <h1 className="font-display text-5xl font-bold text-[var(--text-primary)] mt-1">
-            Wishlist <span className="text-gold-500">({items.length})</span>
+            Wishlist <span className="text-purple-500">({items.length})</span>
           </h1>
         </motion.div>
 
         {items.length === 0 ? (
           <div className="text-center py-24">
-            <div className="w-20 h-20 rounded-full bg-gold-500/10 flex items-center justify-center mx-auto mb-4">
-              <HiOutlineHeart size={32} className="text-gold-500/50" />
+            <div className="w-20 h-20 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+              <HiOutlineHeart size={32} className="text-purple-500/50" />
             </div>
             <h3 className="font-display text-2xl text-[var(--text-primary)] mb-2">Your wishlist is empty</h3>
             <p className="text-[var(--text-secondary)] mb-6">Save items you love to come back to them later</p>
-            <Link href="/shop" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-gold font-semibold text-sm">
+            <Link href="/shop" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl btn-purple font-semibold text-sm">
               <HiOutlineShoppingBag size={18} /> Browse Collection
             </Link>
           </div>
@@ -80,7 +80,7 @@ export default function WishlistPage() {
                     <div className="p-4">
                       <p className="font-mono text-xs text-[var(--text-muted)] uppercase tracking-wide mb-1">{product.category}</p>
                       <Link href={`/shop/${product._id}`}>
-                        <h3 className="font-display text-base font-semibold text-[var(--text-primary)] hover:text-gold-500 transition-colors line-clamp-1">
+                        <h3 className="font-display text-base font-semibold text-[var(--text-primary)] hover:text-purple-500 transition-colors line-clamp-1">
                           {product.name}
                         </h3>
                       </Link>
@@ -90,11 +90,11 @@ export default function WishlistPage() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => addToCart(product, product.sizes?.[0] || 'M', product.colors?.[0] || 'Default')}
-                          className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl btn-gold text-sm font-semibold">
+                          className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl btn-purple text-sm font-semibold">
                           <HiOutlineShoppingBag size={16} /> Add to Cart
                         </button>
                         <Link href={`/tryon?product=${product._id}`}
-                          className="p-2.5 rounded-xl border border-gold-500/30 text-gold-500 hover:bg-gold-500/10 transition-colors">
+                          className="p-2.5 rounded-xl border border-purple-500/30 text-purple-500 hover:bg-purple-500/10 transition-colors">
                           <HiOutlineSparkles size={18} />
                         </Link>
                         <button onClick={() => handleRemove(product._id)}
